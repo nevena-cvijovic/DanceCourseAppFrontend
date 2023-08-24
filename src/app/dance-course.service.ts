@@ -131,10 +131,11 @@ export class DanceCourseService {
   public izmeniRaspored(raspored:RasporedKursa): Observable<RasporedKursa>{
     return this.http.put<RasporedKursa>(`${this.apiServiceUrl}/rasporedKursa/update`,raspored);
   }
-  //DELETE
-  public izbrisiRaspored(plesId: number): Observable<void>{
-    return this.http.delete<void>(`${this.apiServiceUrl}/ples/delete/${plesId}`);
-  }
+  // //DELETE
+  // public izbrisiRaspored(plesId: number): Observable<void>{
+  //   return this.http.delete<void>(`${this.apiServiceUrl}/ples/delete/${plesId}`);
+  // }
+
   //PRIJAVA
 
   //READ
@@ -153,4 +154,6 @@ export class DanceCourseService {
   public izmeniPrijavu(prijava:Prijava): Observable<Prijava>{
     return this.http.put<Prijava>(`${this.apiServiceUrl}/prijava/update`,prijava);
   }
+
+  // //DELETE
 }
