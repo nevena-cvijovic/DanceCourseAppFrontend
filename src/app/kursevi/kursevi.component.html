@@ -1,0 +1,48 @@
+<div class="container" id = "main-container">
+<div class="row">
+  <!-- ovde pozivamo sa ngFor sve zaposlene iz baze da imaju ovakav izgled kartica -->
+  <div *ngFor="let kurs of kursevi" class="col-md-6 col-xl-3">
+    <div class="card m-b-30">
+      <div class="card-body ">
+
+        <div class="card-title text-center ">
+          <b>{{ kurs?.nazivKursa }}</b>
+
+        </div>
+
+
+
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+          <b>Ples:</b> {{ kurs?.ples.nazivPlesa }}
+        </li>
+        <li class="list-group-item">
+          <b>Trajanje u nedeljama:</b> {{ kurs?.trajanjeUNedeljama }}
+        </li>
+      </ul>
+      <div class="card-body">
+        <div class="float-right btn-group btn-group-sm">
+          <!-- dugmad za edit i za delete -->
+          <a
+
+            class="btn btn-outline-warning tooltips"
+            data-placement="top"
+            data-original-title="Edit"
+          ><i class="fa fa-pencil"></i>
+          </a>
+          <a
+
+            class="btn btn-secondary tooltips"
+            data-placement="top"
+            data-original-title="Delete"
+          ><i class="fa fa-times"></i
+          ></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+</div>
