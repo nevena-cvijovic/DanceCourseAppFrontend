@@ -60,8 +60,9 @@ export class DanceCourseService {
     return this.http.put<Kurs>(`${this.apiServiceUrl}/kurs/update`,kurs);
   }
   //DELETE
-  public izbrisiKurs(kursId: number): Observable<void>{
-    return this.http.delete<void>(`${this.apiServiceUrl}/kurs/delete/${kursId}`);
+  public izbrisiKurs(kurs: Kurs): Observable<void>{
+
+    return this.http.delete<void>(`${this.apiServiceUrl}/kurs/delete/${kurs.idKursa}`);
   }
 
 

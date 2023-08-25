@@ -24,6 +24,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { AddKursDialogComponent } from './kursevi/add-kurs-dialog/add-kurs-dialog.component';
 import { MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
+import { RemoveKursDialogComponent } from './kursevi/remove-kurs-dialog/remove-kurs-dialog.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import {MatInputModule} from "@angular/material/input";
     HomeComponent,
     KurseviComponent,
 
-    AddKursDialogComponent
+    AddKursDialogComponent,
+     RemoveKursDialogComponent
   ],
   imports: [
     BrowserModule,

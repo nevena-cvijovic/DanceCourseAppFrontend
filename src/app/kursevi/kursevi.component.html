@@ -30,20 +30,14 @@
       <div class="card-body">
         <div class="float-right btn-group btn-group-sm">
           <!-- dugmad za edit i za delete -->
-          <a
+          <button mat-icon-button  class="example-icon" aria-label="Example icon-button with share icon" >
+            <mat-icon>edit</mat-icon>
+          </button>
 
-            class="btn btn-outline-warning tooltips"
-            data-placement="top"
-            data-original-title="Edit"
-          ><i class="fa fa-pencil"></i>
-          </a>
-          <a
+          <button mat-icon-button (click)="openRemoveDialog(kurs)" class="example-icon" aria-label="Example icon-button with share icon" >
+            <mat-icon>delete</mat-icon>
+          </button>
 
-            class="btn btn-secondary tooltips"
-            data-placement="top"
-            data-original-title="Delete"
-          ><i class="fa fa-times"></i
-          ></a>
         </div>
       </div>
     </div>
