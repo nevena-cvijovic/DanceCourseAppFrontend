@@ -1,4 +1,4 @@
-<header>
+<nav class = "navbar navbar-expand-lg">
   <mat-toolbar color="primary">
     <button mat-icon-button  class="example-icon" (click) = "opened =!opened" aria-label="Example icon-button with menu icon" >
       <mat-icon>menu</mat-icon>
@@ -13,10 +13,11 @@
     <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
       <mat-icon>share</mat-icon>
     </button>
+
   </mat-toolbar>
 
 
-</header>
+</nav>
 <mat-drawer-container class="example-container" autosize>
   <mat-drawer #drawer class="example-sidenav" mode="side" [(opened)] = "opened">
 
@@ -27,8 +28,8 @@
 
 
 
-    <mat-list> <b>Kursevi</b>
-      <mat-list><a routerLink="/kursevi">Pregled svih kurseva</a></mat-list></mat-list>
+    <mat-list>
+      <a routerLink="/kursevi">Kursevi</a></mat-list>
   </mat-drawer>
 
 

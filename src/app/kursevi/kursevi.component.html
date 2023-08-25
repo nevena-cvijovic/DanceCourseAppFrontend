@@ -1,5 +1,11 @@
-<div class="container" id = "main-container">
-<div class="row">
+
+<div class = "container" id = "main-container">
+<div>
+  <button mat-raised-button class = "addButton" (click)="openDialog()">Dodaj novi kurs</button>
+</div>
+
+
+<div class = "row">
   <!-- ovde pozivamo sa ngFor sve zaposlene iz baze da imaju ovakav izgled kartica -->
   <div *ngFor="let kurs of kursevi" class="col-md-6 col-xl-3">
     <div class="card m-b-30">
@@ -45,4 +51,10 @@
 </div>
 
 
-</div>
+
+
+
+
+
+
+  </div>

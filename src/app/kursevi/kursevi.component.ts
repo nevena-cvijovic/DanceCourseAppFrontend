@@ -1,8 +1,13 @@
-import { Component , OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {DanceCourseService} from "../dance-course.service";
 import {Kurs} from "../model/kurs-model";
 import {HttpErrorResponse} from "@angular/common/http";
-import {error} from "@angular/compiler-cli/src/transformers/util";
+
+
+
+import{MatDialog} from "@angular/material/dialog";
+import{AddKursDialogComponent} from "./add-kurs-dialog/add-kurs-dialog.component";
+
 
 @Component({
   selector: 'app-kursevi',
@@ -12,15 +17,21 @@ import {error} from "@angular/compiler-cli/src/transformers/util";
 export class KurseviComponent implements OnInit{
 
   kursevi: Kurs[];
-  constructor(private service: DanceCourseService) {
+
+
+  editKurs: Kurs;
+  deleteKurs:Kurs;
+  constructor(private service: DanceCourseService,public dialog:MatDialog) {
 
 
   }
 ngOnInit() {
     this.getKursevi();
+
 }
 
-  public getKursevi():void{
+
+    public getKursevi():void{
     this.service.vratiKurseve().subscribe(
       (response: Kurs[])=>{
         this.kursevi = response;
@@ -31,21 +42,27 @@ ngOnInit() {
     }
     )
   }
-  /*public getEmployees(): void {
-    //posto vraca observable sto znaci da zahtev putuje preko neta, i morace verovatno malo da se saceka, mora da se subscribe-ujemo
-    //kako bi bili obavesteni ako neki podaci dodju od servera
-    this.employeeService.getEmployees().subscribe(
-      //ako nam se vrati neki odgovor, mora da bude niz zaposlenih
-      (response: Employee[]) => {
-        //sta zelimo ovde da uradimo - pa da ovaj niz gurnemo u promenljivu employees
-        this.employees = response;
-      },
-      //a ako nam vrati gresku onda radimo sledece
-      (error: HttpErrorResponse) => {
-        //onda prikazi alert sa  porukom greske koja je dosla od zahteva
-        alert(error.message);
-      }
-    );
-  }*/
+
+
+openDialog(){
+    const dialogRef =   this.dialog.open(AddKursDialogComponent,{
+
+          width: "550px",
+
+          data:'right click'
+      })
+dialogRef.afterClosed().subscribe(result => {
+    console.log(result);
+    this.ngOnInit();
+
+});
 
 }
+
+
+
+
+}
+
+
+
