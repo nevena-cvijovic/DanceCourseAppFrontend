@@ -30,6 +30,10 @@ h5{
 
 .container{
   margin:0px;
+  padding: 0;
+}
+.row{
+  margin: 0px;
 }
 
 

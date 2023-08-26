@@ -1,0 +1,32 @@
+<form #editForm = "ngForm" >
+    <h1 mat-dialog-title>Izmeni kurs {{kurs?.nazivKursa}}  </h1>
+    <div mat-dialog-content>
+
+        <p>Naziv kursa</p>
+        <mat-form-field >
+            <mat-label >Unesi naziv</mat-label>
+            <input  ngModel="{{kurs?.nazivKursa}}" name = "nazivKursa" matInput required>
+        </mat-form-field>
+        <p>Trajanje u nedeljama</p>
+        <mat-form-field>
+            <mat-label >Uneti broj</mat-label>
+            <input ngModel="{{kurs?.trajanjeUNedeljama}}" name = "trajanjeUNedeljama" matNativeControl matInput placeholder="0" required>
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+
+            <mat-label  >Ples</mat-label>
+            <mat-select  name="ples" required>
+
+                <mat-option  name = "ples" *ngFor = "let ples of plesovi" [value] = "ples">{{ples.nazivPlesa}}</mat-option>
+
+            </mat-select>
+        </mat-form-field>
+
+    </div>
+    <div mat-dialog-actions align="end">
+        <button mat-button (click)="onNoClick()">Cancel</button>
+        <button mat-raised-button type = "submit" [disabled] = "editForm.invalid"  color = "primary"
+               (click)="izmeni(editForm.value)" >Sačuvaj kurs</button>
+    </div>
+</form>

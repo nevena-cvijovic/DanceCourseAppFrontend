@@ -31,7 +31,7 @@ export class RemoveKursDialogComponent implements OnInit{
             alert("Postoji grupa koja pohadja ovaj kurs");
           }
     }
-    )
+    );
     this.dialogRef.close();
   }
 }

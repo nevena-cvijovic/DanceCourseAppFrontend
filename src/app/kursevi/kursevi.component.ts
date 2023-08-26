@@ -8,6 +8,7 @@ import {HttpErrorResponse} from "@angular/common/http";
 import{MatDialog} from "@angular/material/dialog";
 import{AddKursDialogComponent} from "./add-kurs-dialog/add-kurs-dialog.component";
 import {RemoveKursDialogComponent} from "./remove-kurs-dialog/remove-kurs-dialog.component";
+import {EditKursDialogComponent} from "./edit-kurs-dialog/edit-kurs-dialog.component";
 
 
 @Component({
@@ -70,6 +71,16 @@ dialogRef.afterClosed().subscribe(result => {
             this.ngOnInit();
 
         });
+    }
+
+    openEditDialog(kurs: Kurs) {
+        const dialogRef = this.dialog.open(EditKursDialogComponent,{
+            data: kurs
+        });
+        dialogRef.afterClosed().subscribe(result =>{
+            console.log(result);
+            this.ngOnInit();
+        })
     }
 }
 

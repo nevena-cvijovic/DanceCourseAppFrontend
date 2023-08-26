@@ -16,7 +16,7 @@ import {DanceCourseService} from "./dance-course.service";
 import {HttpClientModule} from "@angular/common/http";
 import {MatMenuModule} from "@angular/material/menu";
 import {MatButtonModule} from "@angular/material/button";
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatSelectModule} from "@angular/material/select";
 import {MatDialog} from "@angular/material/dialog";
 import {MatDialogModule} from '@angular/material/dialog';
@@ -25,6 +25,7 @@ import { AddKursDialogComponent } from './kursevi/add-kurs-dialog/add-kurs-dialo
 import { MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import { RemoveKursDialogComponent } from './kursevi/remove-kurs-dialog/remove-kurs-dialog.component';
+import { EditKursDialogComponent } from './kursevi/edit-kurs-dialog/edit-kurs-dialog.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { RemoveKursDialogComponent } from './kursevi/remove-kurs-dialog/remove-k
     KurseviComponent,
 
     AddKursDialogComponent,
-     RemoveKursDialogComponent
+     RemoveKursDialogComponent,
+     EditKursDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -52,7 +54,8 @@ import { RemoveKursDialogComponent } from './kursevi/remove-kurs-dialog/remove-k
     MatSelectModule,
     MatDialogModule,
     MatFormFieldModule,
-      MatInputModule
+    MatInputModule,
+    ReactiveFormsModule
   ],
   providers: [DanceCourseService,MatDialog],
   bootstrap: [AppComponent]
