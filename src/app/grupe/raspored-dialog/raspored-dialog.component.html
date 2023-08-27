@@ -1,0 +1,34 @@
+<div>
+
+
+    <div class="tabela mat-elevation-z8">
+        <table mat-table [dataSource]="dataSource">
+            <!--            pravljenje kolona-->
+
+            <ng-container matColumnDef ="danUNedelji">
+                <th mat-header-cell  *matHeaderCellDef ><b>Dan u nedelji</b></th>
+                <td mat-cell *matCellDef ="let raspored">{{raspored.danUNedelji}}</td>
+            </ng-container>
+            <ng-container matColumnDef ="brojCasova">
+                <th mat-header-cell  *matHeaderCellDef ><b>Broj časova</b></th>
+                <td mat-cell *matCellDef ="let raspored">{{raspored.brojCasova}}</td>
+            </ng-container>
+            <ng-container matColumnDef ="brojSale">
+                <th mat-header-cell  *matHeaderCellDef ><b>Broj sale</b></th>
+                <td mat-cell *matCellDef ="let raspored">{{raspored.brojSale}}</td>
+            </ng-container>
+            <ng-container matColumnDef ="vreme">
+                <th mat-header-cell  *matHeaderCellDef ><b>Vreme</b></th>
+                <td mat-cell *matCellDef ="let raspored">{{raspored.vreme}}</td>
+            </ng-container>
+            <ng-container matColumnDef ="opisKursa">
+                <th mat-header-cell  *matHeaderCellDef ><b>Opis</b></th>
+                <td mat-cell *matCellDef ="let raspored">{{raspored.opisKursa}}</td>
+            </ng-container>
+            <tr mat-header-row  *matHeaderRowDef="displayedColumns" ></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+
+    </div>
+
+</div>
