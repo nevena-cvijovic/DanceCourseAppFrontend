@@ -14,8 +14,9 @@ import {Kurs} from "../../model/kurs-model";
 export class EditKursDialogComponent implements OnInit{
   plesovi: Ples[];
   kurs: Kurs;
-  pl:Ples;
+  pless: string;
 
+  pl: Ples;
 
 
   constructor(public dialogRef: MatDialogRef<EditKursDialogComponent>,
@@ -23,18 +24,18 @@ export class EditKursDialogComponent implements OnInit{
       this.kurs = this.data;
       console.log("kurs pre izmene")
       console.log(this.kurs);
-
-      this.pl = this.kurs.ples;
-      // console.log("ples")
-      // console.log(this.ples)
+      this.pless = this.kurs.ples.nazivPlesa;
+    this.pl = this.kurs.ples;
 
 
   }
 
+
+
   ngOnInit(){
     this.getPlesovi()
       console.log("ples u ngOnInitu")
-      console.log(this.pl)
+
   }
   onNoClick() {
     this.dialogRef.close();
@@ -55,7 +56,7 @@ export class EditKursDialogComponent implements OnInit{
     izmeni(k: Kurs) {
       console.log("nakon izmena kurs")
       console.log(k)
-        if(k.ples!=null){ this.kurs.ples = k.ples;}
+
 
       this.kurs.trajanjeUNedeljama = k.trajanjeUNedeljama;
       this.kurs.nazivKursa = k.nazivKursa;

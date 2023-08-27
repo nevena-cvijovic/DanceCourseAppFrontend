@@ -3,7 +3,13 @@
 <div>
   <button mat-raised-button class = "addButton" (click)="openDialog()">Dodaj novi kurs</button>
 </div>
+<div class="searchbar mt-4">
+  <form class = "form-inline my-2 my-lg-0">
 
+      <input type = "search" (ngModelChange) = "searchKurs(key.value)" #key ="ngModel" ngModel name = "key" id="searchName" class = "form-control" placeholder="Pretraži kurseve" required/>
+
+  </form>
+</div>
 
 <div class = "row">
   <!-- ovde pozivamo sa ngFor sve zaposlene iz baze da imaju ovakav izgled kartica -->

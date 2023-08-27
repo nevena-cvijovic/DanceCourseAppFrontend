@@ -13,15 +13,12 @@
             <input ngModel="{{kurs?.trajanjeUNedeljama}}" name = "trajanjeUNedeljama" matNativeControl matInput placeholder="0" required>
         </mat-form-field>
         <br>
+        <p>Ples</p>
         <mat-form-field>
-
-            <mat-label  >Ples</mat-label>
-            <mat-select  name="ples" required>
-
-                <mat-option  name = "ples" *ngFor = "let ples of plesovi" [value] = "ples">{{ples.nazivPlesa}}</mat-option>
-
-            </mat-select>
+            <mat-label>Ples</mat-label>
+            <input matInput disabled value="{{pless}}">
         </mat-form-field>
+
 
     </div>
     <div mat-dialog-actions align="end">

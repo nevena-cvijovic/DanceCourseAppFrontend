@@ -9,7 +9,7 @@ import{MatDialog} from "@angular/material/dialog";
 import{AddKursDialogComponent} from "./add-kurs-dialog/add-kurs-dialog.component";
 import {RemoveKursDialogComponent} from "./remove-kurs-dialog/remove-kurs-dialog.component";
 import {EditKursDialogComponent} from "./edit-kurs-dialog/edit-kurs-dialog.component";
-
+import {MatFormFieldControl} from "@angular/material/form-field";
 
 @Component({
   selector: 'app-kursevi',
@@ -21,8 +21,7 @@ export class KurseviComponent implements OnInit{
   kursevi: Kurs[];
 
 
-  editKurs: Kurs;
-  deleteKurs:Kurs;
+
   constructor(private service: DanceCourseService,public dialog:MatDialog) {
 
 
@@ -81,6 +80,24 @@ dialogRef.afterClosed().subscribe(result => {
             console.log(result);
             this.ngOnInit();
         })
+    }
+
+    searchKurs(key: string) {
+        console.log(key);
+        const results: Kurs[] = [];
+        for(const kurs of this.kursevi){
+            if(
+                kurs.nazivKursa.toLowerCase().indexOf(key.toLowerCase())!==-1 ||
+                kurs.trajanjeUNedeljama.toString().indexOf(key.toLowerCase())!==-1||
+                kurs.ples.nazivPlesa.toLowerCase().indexOf(key.toLowerCase()) !==-1
+            ){
+                results.push(kurs);
+            }
+        }
+        this.kursevi = results;
+        if(results.length===0 ||!key){
+            this.getKursevi();
+        }
     }
 }
 

@@ -35,5 +35,22 @@ h5{
 .row{
   margin: 0px;
 }
+.form-control{
 
+  outline-color: #801ca4;
+  border-inline-color: #801ca4;
+  border-color: #801ca4;
+  background-color: #303030;
+}
+.form-control:focus {
+  border-color: blueviolet;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(128, 28, 164, 1);
 
+}
+input[type="search"]::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  background: url(https://pro.fontawesome.com/releases/v5.10.0/svgs/solid/times-circle.svg) no-repeat 50% 50%;
+}
