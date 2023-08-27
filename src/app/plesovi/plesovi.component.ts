@@ -3,6 +3,8 @@ import {Ples} from "../model/ples-model";
 import {HttpErrorResponse} from "@angular/common/http";
 import {DanceCourseService} from "../dance-course.service";
 import {MatTableDataSource} from "@angular/material/table";
+import {MatDialog} from "@angular/material/dialog";
+import {AddPlesDialogComponent} from "./add-ples-dialog/add-ples-dialog.component";
 
 @Component({
   selector: 'app-plesovi',
@@ -17,7 +19,7 @@ export class PlesoviComponent implements OnInit{
   dataSource:any;
     color: ' #801ca4';
 
-constructor(private service: DanceCourseService) {
+constructor(private service: DanceCourseService,public dialog:MatDialog) {
 }
 
 ngOnInit() {
@@ -54,5 +56,14 @@ ngOnInit() {
     }
 
 
+    openDialog() {
+        const dialogRef = this.dialog.open(AddPlesDialogComponent,{
+            width:"550px",
 
+        });
+        dialogRef.afterClosed().subscribe(result=>{
+            console.log(result);
+            this.getPlesovi();
+        })
+    }
 }

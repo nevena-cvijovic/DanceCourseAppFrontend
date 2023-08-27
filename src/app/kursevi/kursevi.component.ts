@@ -10,6 +10,7 @@ import{AddKursDialogComponent} from "./add-kurs-dialog/add-kurs-dialog.component
 import {RemoveKursDialogComponent} from "./remove-kurs-dialog/remove-kurs-dialog.component";
 import {EditKursDialogComponent} from "./edit-kurs-dialog/edit-kurs-dialog.component";
 import {MatFormFieldControl} from "@angular/material/form-field";
+import { Router} from "@angular/router";
 
 @Component({
   selector: 'app-kursevi',
@@ -22,7 +23,8 @@ export class KurseviComponent implements OnInit{
 
 
 
-  constructor(private service: DanceCourseService,public dialog:MatDialog) {
+  constructor(private service: DanceCourseService,public dialog:MatDialog, private router: Router) {
+
 
 
   }
@@ -51,10 +53,11 @@ openDialog(){
           width: "550px",
 
           data:'right click'
-      })
+      });
 dialogRef.afterClosed().subscribe(result => {
     console.log(result);
-    this.ngOnInit();
+     // this.ngOnInit();
+window.location.reload();
 
 });
 
@@ -79,7 +82,9 @@ dialogRef.afterClosed().subscribe(result => {
         dialogRef.afterClosed().subscribe(result =>{
             console.log(result);
             this.ngOnInit();
-        })
+
+
+        });
     }
 
     searchKurs(key: string) {

@@ -28,6 +28,8 @@ import { RemoveKursDialogComponent } from './kursevi/remove-kurs-dialog/remove-k
 import { EditKursDialogComponent } from './kursevi/edit-kurs-dialog/edit-kurs-dialog.component';
 import { PlesoviComponent } from './plesovi/plesovi.component';
 import {MatTableModule} from '@angular/material/table';
+import { AddPlesDialogComponent } from './plesovi/add-ples-dialog/add-ples-dialog.component';
+import { GrupaComponent } from './grupa/grupa.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,7 +41,9 @@ import {MatTableModule} from '@angular/material/table';
     AddKursDialogComponent,
      RemoveKursDialogComponent,
      EditKursDialogComponent,
-     PlesoviComponent
+     PlesoviComponent,
+     AddPlesDialogComponent,
+     GrupaComponent
   ],
   imports: [
     BrowserModule,

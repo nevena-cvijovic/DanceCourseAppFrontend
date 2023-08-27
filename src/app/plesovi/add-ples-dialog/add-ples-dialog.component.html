@@ -1,0 +1,17 @@
+<form #addForm = "ngForm">
+    <h1 mat-dialog-title>Dodaj ples  </h1>
+    <div mat-dialog-content>
+        <p>Naziv plesa</p>
+        <mat-form-field>
+            <mat-label>Unesi naziv plesa</mat-label>
+            <input ngModel name = "nazivPlesa" matInput required/>
+        </mat-form-field>
+
+    </div>
+    <div mat-dialog-actions align="end">
+        <button mat-button (click)="onCancelClick()">Otkaži</button>
+        <button mat-raised-button type="submit" color="primary" [disabled]="addForm.invalid"
+        (click)="dodajPles(addForm)">Sačuvaj ples</button>
+
+    </div>
+</form>
