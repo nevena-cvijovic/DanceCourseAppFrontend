@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import {PreloadAllModules, RouterModule, Routes} from '@angular/router';
 import {HomeComponent} from "./home/home.component";
 import {KurseviComponent} from "./kursevi/kursevi.component";
+import {PlesoviComponent} from "./plesovi/plesovi.component";
 
 const routes: Routes = [
 
@@ -18,6 +19,12 @@ const routes: Routes = [
       { path: '', component: KurseviComponent, title: 'Kursevi' },
 
     ],
+  },
+  {
+    path:'plesovi',
+    children:[
+      {path: '', component: PlesoviComponent, title:'Plesovi'},
+    ]
   }
 ];
 

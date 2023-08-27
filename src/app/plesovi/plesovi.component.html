@@ -1,0 +1,25 @@
+<div class = "container" id = "main-container">
+    <div class="addButton" >
+        <button mat-raised-button  color = "primary">Dodaj novi ples</button>
+    </div>
+    <div class ="searchbar mt-4 mb-4">
+        <form class = "form-inline my-2 my-lg-0">
+            <input type = "search" (ngModelChange) = "searchPles(key.value)"  #key = "ngModel" ngModel name = "key" id = "searchName" class = "form-control" placeholder="Pretraži plesove" required/>
+        </form>
+    </div>
+
+<!--Tabela plesova-->
+    <div  class="mat-elevation-z8">
+
+        <table mat-table [dataSource]="dataSource">
+<!--            pravljenje kolona-->
+
+            <ng-container matColumnDef ="nazivPlesa">
+                <th mat-header-cell  *matHeaderCellDef [style.background-color]="color"><b>Naziv</b></th>
+                <td mat-cell *matCellDef ="let ples">{{ples.nazivPlesa}}</td>
+            </ng-container>
+            <tr mat-header-row  *matHeaderRowDef="displayedColumns" ></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+    </div>
+</div>

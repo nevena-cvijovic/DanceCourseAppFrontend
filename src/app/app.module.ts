@@ -26,7 +26,8 @@ import { MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import { RemoveKursDialogComponent } from './kursevi/remove-kurs-dialog/remove-kurs-dialog.component';
 import { EditKursDialogComponent } from './kursevi/edit-kurs-dialog/edit-kurs-dialog.component';
-
+import { PlesoviComponent } from './plesovi/plesovi.component';
+import {MatTableModule} from '@angular/material/table';
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,7 +38,8 @@ import { EditKursDialogComponent } from './kursevi/edit-kurs-dialog/edit-kurs-di
 
     AddKursDialogComponent,
      RemoveKursDialogComponent,
-     EditKursDialogComponent
+     EditKursDialogComponent,
+     PlesoviComponent
   ],
   imports: [
     BrowserModule,
@@ -55,7 +57,8 @@ import { EditKursDialogComponent } from './kursevi/edit-kurs-dialog/edit-kurs-di
     MatDialogModule,
     MatFormFieldModule,
     MatInputModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatTableModule
   ],
   providers: [DanceCourseService,MatDialog],
   bootstrap: [AppComponent]

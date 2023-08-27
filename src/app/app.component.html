@@ -3,15 +3,13 @@
     <button mat-icon-button  class="example-icon" (click) = "opened =!opened" aria-label="Example icon-button with menu icon" >
       <mat-icon>menu</mat-icon>
     </button>
-    <span class = "naslov">Maravilla Arte</span>
-    <span><a routerLink="/">Home</a></span>
+    <span class = "naslov"><a routerLink="/" class = "naslov">Maravilla Arte</a></span>
     <span><a routerLink="/kursevi">Kursevi</a></span>
+    <span><a routerLink="/plesovi">Plesovi</a></span>
     <span class="example-spacer"></span>
-    <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
-      <mat-icon>favorite</mat-icon>
-    </button>
+
     <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
-      <mat-icon>share</mat-icon>
+     <mat-icon>exit_to_app</mat-icon>
     </button>
 
   </mat-toolbar>
@@ -24,17 +22,22 @@
 
 
 
-  <mat-list> <a routerLink="/">Home</a></mat-list>
+  <mat-list> <a routerLink="/">Početna strana</a></mat-list>
 
 
 
     <mat-list>
       <a routerLink="/kursevi">Kursevi</a></mat-list>
+
+    <mat-list> <a routerLink="/plesovi">Plesovi</a></mat-list>
   </mat-drawer>
 
 
   <div class="body">
     <router-outlet />
+
+
+
   </div>
 </mat-drawer-container>
 
