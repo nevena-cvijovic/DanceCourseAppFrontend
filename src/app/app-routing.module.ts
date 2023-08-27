@@ -3,6 +3,7 @@ import {PreloadAllModules, RouterModule, Routes} from '@angular/router';
 import {HomeComponent} from "./home/home.component";
 import {KurseviComponent} from "./kursevi/kursevi.component";
 import {PlesoviComponent} from "./plesovi/plesovi.component";
+import {GrupeComponent} from "./grupe/grupe.component";
 
 const routes: Routes = [
 
@@ -24,6 +25,12 @@ const routes: Routes = [
     path:'plesovi',
     children:[
       {path: '', component: PlesoviComponent, title:'Plesovi'},
+    ]
+  },
+  {
+    path:'grupe',
+    children:[
+      {path: '', component: GrupeComponent, title:'Grupe'},
     ]
   }
 ];

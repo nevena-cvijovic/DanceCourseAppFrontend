@@ -29,7 +29,10 @@ import { EditKursDialogComponent } from './kursevi/edit-kurs-dialog/edit-kurs-di
 import { PlesoviComponent } from './plesovi/plesovi.component';
 import {MatTableModule} from '@angular/material/table';
 import { AddPlesDialogComponent } from './plesovi/add-ples-dialog/add-ples-dialog.component';
-import { GrupaComponent } from './grupa/grupa.component';
+
+import { GrupeComponent } from './grupe/grupe.component';
+import {MatCardModule} from "@angular/material/card";
+import { RasporedDialogComponent } from './grupe/raspored-dialog/raspored-dialog.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,7 +46,9 @@ import { GrupaComponent } from './grupa/grupa.component';
      EditKursDialogComponent,
      PlesoviComponent,
      AddPlesDialogComponent,
-     GrupaComponent
+
+     GrupeComponent,
+      RasporedDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -62,7 +67,8 @@ import { GrupaComponent } from './grupa/grupa.component';
     MatFormFieldModule,
     MatInputModule,
     ReactiveFormsModule,
-    MatTableModule
+    MatTableModule,
+    MatCardModule
   ],
   providers: [DanceCourseService,MatDialog],
   bootstrap: [AppComponent]

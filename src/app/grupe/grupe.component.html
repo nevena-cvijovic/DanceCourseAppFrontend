@@ -1,0 +1,35 @@
+<div class ="container">
+    <div class="addButton" >
+        <button mat-raised-button  color = "primary" >Dodaj novu grupu</button>
+    </div>
+    <div class ="searchbar mt-4 mb-4">
+        <form class = "form-inline my-2 my-lg-0">
+            <input type = "search" (ngModelChange) = "searchGrupa(key.value)"  #key = "ngModel" ngModel name = "key" id = "searchName" class = "form-control" placeholder="Pretraži grupe" required/>
+        </form>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6 col-xl-3" *ngFor="let grupa of grupe">
+        <mat-card class="example-card" >
+            <mat-card-header >
+                <mat-card-title>{{grupa?.nazivGrupe}}</mat-card-title>
+
+            </mat-card-header>
+            <br/>
+            <mat-card-content>
+                <mat-list>
+               <p><b>Kurs:</b> {{grupa?.kurs?.nazivKursa}}</p>
+                </mat-list>
+               <mat-list>
+                <p><b>Datum početka rada: </b> {{grupa?.datumPocetkaKursa | date:'dd/MM/yyyy' }}</p>
+                </mat-list>    </mat-card-content>
+
+
+            <mat-card-actions align="end">
+                <button mat-raised-button  class = "pogledajButton">Raspored</button>
+
+            </mat-card-actions>
+        </mat-card>
+        </div>
+    </div>
+</div>
