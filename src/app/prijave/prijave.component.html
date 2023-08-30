@@ -1,0 +1,47 @@
+<div class = "container" id = "main-container">
+
+
+
+  <div class="row">
+    <div class="col-md-6 col-xl-3" *ngFor="let prijava of prijave">
+      <mat-card class="example-card" >
+        <mat-card-header >
+          <mat-card-title>Prijava </mat-card-title>
+
+        </mat-card-header>
+        <br/>
+        <mat-card-content>
+          <mat-list>
+            <p><b>Kurs:</b> {{prijava?.kurs?.nazivKursa}}</p>
+          </mat-list>
+
+          <mat-divider></mat-divider>
+          <mat-list>
+            <p><b>Korisnik:</b> {{prijava?.korisnik?.ime}}  {{prijava?.korisnik?.prezime}} - {{prijava?.korisnik?.korisnickoIme}}</p>
+          </mat-list>
+          <mat-divider></mat-divider>
+          <mat-list>
+            <p><b>Datum prijave: </b> {{prijava?.datumPrijave | date:'dd/MM/yyyy' }}</p>
+          </mat-list>
+          <mat-divider></mat-divider>
+          <mat-list>
+            <p><b>Napomena:</b> {{prijava?.napomena}} </p>
+          </mat-list>
+          <mat-divider></mat-divider>
+          <mat-list>
+            <p><b>Grupa:</b> {{prijava?.grupa?.nazivGrupe}} </p>
+          </mat-list>
+        </mat-card-content>
+<mat-divider></mat-divider>
+
+
+        <mat-card-actions align="end" class="float-right btn-group btn-group-sm">
+          <button mat-icon-button  class="example-icon" aria-label="Example icon-button with share icon" >
+            <mat-icon>edit</mat-icon>
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+
+</div>
