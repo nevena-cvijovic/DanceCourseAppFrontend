@@ -20,7 +20,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatSelectModule} from "@angular/material/select";
 import {MatDialog} from "@angular/material/dialog";
 import {MatDialogModule} from '@angular/material/dialog';
-
+import {MatDividerModule} from '@angular/material/divider'
 import { AddKursDialogComponent } from './kursevi/add-kurs-dialog/add-kurs-dialog.component';
 import { MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
@@ -37,6 +37,8 @@ import { AddGrupaComponent } from './grupe/add-grupa/add-grupa.component';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from "@angular/material/core";
 import { PrijaveComponent } from './prijave/prijave.component';
+import { EditPrijavaDialogComponent } from './prijave/edit-prijava-dialog/edit-prijava-dialog.component';
+import { RegisterComponent } from './register/register.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -54,7 +56,9 @@ import { PrijaveComponent } from './prijave/prijave.component';
      GrupeComponent,
       RasporedDialogComponent,
       AddGrupaComponent,
-      PrijaveComponent
+      PrijaveComponent,
+      EditPrijavaDialogComponent,
+      RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -78,6 +82,7 @@ import { PrijaveComponent } from './prijave/prijave.component';
       MatStepperModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatDividerModule,
 
   ],
   providers: [DanceCourseService,MatDialog],

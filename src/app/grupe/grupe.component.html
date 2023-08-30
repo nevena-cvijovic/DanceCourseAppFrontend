@@ -20,11 +20,12 @@
                 <mat-list>
                <p><b>Kurs:</b> {{grupa?.kurs?.nazivKursa}}</p>
                 </mat-list>
+              <mat-divider></mat-divider>
                <mat-list>
                 <p><b>Datum početka rada: </b> {{grupa?.datumPocetkaKursa | date:'dd/MM/yyyy' }}</p>
                 </mat-list>    </mat-card-content>
 
-
+          <mat-divider></mat-divider>
             <mat-card-actions align="end">
                 <button mat-raised-button  class = "pogledajButton" (click)="openDialog(grupa)">Raspored</button>
 

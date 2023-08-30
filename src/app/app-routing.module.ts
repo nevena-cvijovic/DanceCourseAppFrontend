@@ -5,6 +5,7 @@ import {KurseviComponent} from "./kursevi/kursevi.component";
 import {PlesoviComponent} from "./plesovi/plesovi.component";
 import {GrupeComponent} from "./grupe/grupe.component";
 import {AddGrupaComponent} from "./grupe/add-grupa/add-grupa.component";
+import {PrijaveComponent} from "./prijave/prijave.component";
 
 const routes: Routes = [
 
@@ -34,7 +35,14 @@ const routes: Routes = [
       {path: '', component: GrupeComponent, title:'Grupe'},
       {path: 'add-grupa', component: AddGrupaComponent, title: "Add grupa"}
     ]
+  },
+  {
+    path:'prijave',
+    children:[
+      {path: '', component: PrijaveComponent, title:'Prijave'},
+    ]
   }
+
 ];
 
 @NgModule({

@@ -14,27 +14,34 @@
 <div class = "row">
   <!-- ovde pozivamo sa ngFor sve zaposlene iz baze da imaju ovakav izgled kartica -->
   <div *ngFor="let kurs of kursevi" class="col-md-6 col-xl-3">
-    <div class="card m-b-30">
-      <div class="card-body ">
+    <mat-card class="card m-b-30">
+      <mat-card-header class="card-body ">
 
-        <div class="card-title text-center ">
+        <mat-card-title class="card-title text-center ">
           <b>{{ kurs?.nazivKursa }}</b>
 
-        </div>
+        </mat-card-title>
 
 
 
-      </div>
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item">
+      </mat-card-header>
+      <br>
+      <mat-divider></mat-divider>
+      <mat-card-content>
+
+
+        <mat-list class="list-group-item">
           <b>Ples:</b> {{ kurs?.ples.nazivPlesa }}
-        </li>
-        <li class="list-group-item">
+        </mat-list>
+        <mat-divider></mat-divider>
+        <mat-list class="list-group-item">
           <b>Trajanje u nedeljama:</b> {{ kurs?.trajanjeUNedeljama }}
-        </li>
-      </ul>
-      <div class="card-body">
-        <div class="float-right btn-group btn-group-sm">
+        </mat-list>
+
+      </mat-card-content>
+      <mat-divider></mat-divider>
+      <mat-card-actions class="card-body" align="end">
+        <div class="float-right btn-group btn-group-sm" >
           <!-- dugmad za edit i za delete -->
           <button mat-icon-button  class="example-icon" aria-label="Example icon-button with share icon" (click)="openEditDialog(kurs)" >
             <mat-icon>edit</mat-icon>
@@ -45,8 +52,8 @@
           </button>
 
         </div>
-      </div>
-    </div>
+      </mat-card-actions>
+    </mat-card>
   </div>
 </div>
 

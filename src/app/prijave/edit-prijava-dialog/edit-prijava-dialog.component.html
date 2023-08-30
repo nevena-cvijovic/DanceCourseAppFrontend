@@ -1,0 +1,43 @@
+
+<form #editForm = "ngForm" >
+  <h1 mat-dialog-title>Izmeni prijavu  </h1>
+  <div mat-dialog-content>
+
+    <p>Naziv kursa</p>
+    <mat-form-field >
+      <mat-label >Unesi naziv</mat-label>
+      <input  value="{{prijava?.kurs?.nazivKursa}}" name = "nazivKursa" matInput disabled required>
+    </mat-form-field>
+    <p>Polaznik</p>
+    <mat-form-field>
+      <mat-label >Uneti polaznika</mat-label>
+      <input disabled value="{{prijava?.korisnik?.ime}} {{prijava?.korisnik?.prezime}} - {{prijava?.korisnik?.korisnickoIme}}" name = "trajanjeUNedeljama"  matInput  required>
+    </mat-form-field>
+    <br>
+    <p>Datum prijave</p>
+    <mat-form-field>
+      <mat-label>Datum prijave</mat-label>
+      <input matInput disabled value="{{prijava?.datumPrijave| date:'dd/MM/yyyy'}}">
+    </mat-form-field>
+    <p>Napomena</p>
+    <mat-form-field>
+      <mat-label>Napomena</mat-label>
+      <input matInput disabled value="{{prijava?.napomena}}">
+    </mat-form-field>
+<mat-divider></mat-divider>
+    <p>Grupa</p>
+    <mat-form-field>
+      <mat-label>Grupa</mat-label>
+      <mat-select ngModel name = "grupa" required>
+        <mat-option  name = "grupa" *ngFor = "let grupa of grupe" [value] = "grupa">{{grupa.nazivGrupe}}</mat-option>
+
+      </mat-select>
+    </mat-form-field>
+
+  </div>
+  <div mat-dialog-actions align="end">
+    <button mat-button (click)="onNoClick()">Cancel</button>
+    <button mat-raised-button type = "submit" [disabled] = "editForm.invalid"  color = "primary"
+            (click)="izmeni(editForm.value)" >Sačuvaj prijavu</button>
+  </div>
+</form>
