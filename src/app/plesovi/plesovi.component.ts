@@ -5,6 +5,8 @@ import {DanceCourseService} from "../dance-course.service";
 import {MatTableDataSource} from "@angular/material/table";
 import {MatDialog} from "@angular/material/dialog";
 import {AddPlesDialogComponent} from "./add-ples-dialog/add-ples-dialog.component";
+import {SelectionModel} from "@angular/cdk/collections";
+
 
 @Component({
   selector: 'app-plesovi',
@@ -15,8 +17,9 @@ export class PlesoviComponent implements OnInit{
 
   plesovi: Ples[];
   displayedColumns: string[] = [ 'nazivPlesa'];
-
+    selection = new SelectionModel<Ples>(false, []);
   dataSource:any;
+
     color: ' #801ca4';
 
 constructor(private service: DanceCourseService,public dialog:MatDialog) {

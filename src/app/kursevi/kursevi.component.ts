@@ -23,7 +23,7 @@ export class KurseviComponent implements OnInit{
 
 
 
-  constructor(private service: DanceCourseService,public dialog:MatDialog, private router: Router) {
+  constructor(private service: DanceCourseService,public dialog:MatDialog) {
 
 
 

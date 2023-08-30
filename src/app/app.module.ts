@@ -29,10 +29,14 @@ import { EditKursDialogComponent } from './kursevi/edit-kurs-dialog/edit-kurs-di
 import { PlesoviComponent } from './plesovi/plesovi.component';
 import {MatTableModule} from '@angular/material/table';
 import { AddPlesDialogComponent } from './plesovi/add-ples-dialog/add-ples-dialog.component';
-
+import {MatStepperModule} from '@angular/material/stepper';
 import { GrupeComponent } from './grupe/grupe.component';
 import {MatCardModule} from "@angular/material/card";
 import { RasporedDialogComponent } from './grupe/raspored-dialog/raspored-dialog.component';
+import { AddGrupaComponent } from './grupe/add-grupa/add-grupa.component';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule} from "@angular/material/core";
+import { PrijaveComponent } from './prijave/prijave.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,7 +52,9 @@ import { RasporedDialogComponent } from './grupe/raspored-dialog/raspored-dialog
      AddPlesDialogComponent,
 
      GrupeComponent,
-      RasporedDialogComponent
+      RasporedDialogComponent,
+      AddGrupaComponent,
+      PrijaveComponent
   ],
   imports: [
     BrowserModule,
@@ -68,7 +74,11 @@ import { RasporedDialogComponent } from './grupe/raspored-dialog/raspored-dialog
     MatInputModule,
     ReactiveFormsModule,
     MatTableModule,
-    MatCardModule
+    MatCardModule,
+      MatStepperModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+
   ],
   providers: [DanceCourseService,MatDialog],
   bootstrap: [AppComponent]

@@ -4,6 +4,7 @@ import {HomeComponent} from "./home/home.component";
 import {KurseviComponent} from "./kursevi/kursevi.component";
 import {PlesoviComponent} from "./plesovi/plesovi.component";
 import {GrupeComponent} from "./grupe/grupe.component";
+import {AddGrupaComponent} from "./grupe/add-grupa/add-grupa.component";
 
 const routes: Routes = [
 
@@ -31,6 +32,7 @@ const routes: Routes = [
     path:'grupe',
     children:[
       {path: '', component: GrupeComponent, title:'Grupe'},
+      {path: 'add-grupa', component: AddGrupaComponent, title: "Add grupa"}
     ]
   }
 ];

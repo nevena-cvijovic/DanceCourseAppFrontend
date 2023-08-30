@@ -1,6 +1,6 @@
 <div class ="container">
     <div class="addButton" >
-        <button mat-raised-button  color = "primary" >Dodaj novu grupu</button>
+        <button mat-raised-button  color = "primary" routerLink="/grupe/add-grupa" >Dodaj novu grupu</button>
     </div>
     <div class ="searchbar mt-4 mb-4">
         <form class = "form-inline my-2 my-lg-0">
@@ -26,7 +26,7 @@
 
 
             <mat-card-actions align="end">
-                <button mat-raised-button  class = "pogledajButton">Raspored</button>
+                <button mat-raised-button  class = "pogledajButton" (click)="openDialog(grupa)">Raspored</button>
 
             </mat-card-actions>
         </mat-card>

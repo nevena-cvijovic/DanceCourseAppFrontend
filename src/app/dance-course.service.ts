@@ -114,6 +114,9 @@ export class DanceCourseService {
     return this.http.delete<void>(`${this.apiServiceUrl}/grupa/delete/${grupaId}`);
   }
 
+  public vratiMaksId():Observable<number>{
+    return this.http.get<number>(`${this.apiServiceUrl}/grupa/vrati`)
+  }
 
   /////////////////////////////////////////
   //RASPORED KURSA

@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {Grupa} from "../model/grupa-model";
 import {DanceCourseService} from "../dance-course.service";
 import {HttpErrorResponse} from "@angular/common/http";
+import {MatDialog} from "@angular/material/dialog";
+import {RasporedDialogComponent} from "./raspored-dialog/raspored-dialog.component";
 
 @Component({
   selector: 'app-grupe',
@@ -11,10 +13,11 @@ import {HttpErrorResponse} from "@angular/common/http";
 export class GrupeComponent implements OnInit{
 grupe: Grupa[];
 
-constructor(private service: DanceCourseService) {
+constructor(private service: DanceCourseService, public dialog:MatDialog) {
 }
 
 ngOnInit() {
+  console.log('ng on init')
   this.getGrupe();
 }
 
@@ -43,5 +46,20 @@ getGrupe(){
         if(results.length===0 ||!key){
             this.getGrupe();
         }
+    }
+
+    openDialog(grupa:Grupa) {
+
+    const dialogRef = this.dialog.open(RasporedDialogComponent,{
+        width: '700px',
+        data: grupa
+    });
+        dialogRef.afterClosed().subscribe(result =>{
+            console.log(result);
+            this.ngOnInit();
+
+
+        });
+
     }
 }

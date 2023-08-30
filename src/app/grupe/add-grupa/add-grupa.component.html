@@ -1,0 +1,132 @@
+<div class="container">
+    <h1 >Dodaj novu grupu  </h1>
+<mat-stepper orientation="vertical" #stepper  >
+    <mat-step [stepControl]="firstFormGroup" errorMessage="Sva polja su obavezna.">
+    <form [formGroup]="firstFormGroup">
+        <ng-template matStepLabel>Popuni podatke o grupi</ng-template>
+
+        <div>
+
+            <p>Naziv grupe</p>
+            <mat-form-field >
+                <mat-label >Unesi naziv</mat-label>
+                <input   formControlName = "nazivGrupe" matInput required>
+            </mat-form-field>
+            <p>Datum početka rada</p>
+            <mat-form-field>
+                <mat-label>Choose a date</mat-label>
+                <input matInput formControlName="datumPocetkaKursa" [matDatepicker]="picker" required>
+                <mat-hint>MM/DD/YYYY</mat-hint>
+                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+            <br>
+            <p>Kurs</p>
+            <mat-form-field>
+
+                <mat-label>Izaberi kurs</mat-label>
+                <mat-select formControlName = "kurs" required>
+                    <mat-option    *ngFor = "let kurs of kursevi" [value] = "kurs">{{kurs.nazivKursa}}</mat-option>
+
+                </mat-select>
+            </mat-form-field>
+
+            <div>
+                <button mat-raised-button matStepperNext color="primary" [disabled]="firstFormGroup.invalid">Dalje</button>
+            </div>
+        </div>
+    </form>
+    </mat-step>
+    <mat-step >
+        <form [formGroup]="rasporedForm" >
+            <ng-template matStepLabel>Ubaci rasporede za grupu</ng-template>
+
+            <p>Dan u nedelji</p>
+            <mat-form-field>
+
+                <mat-label>Izaberi dan</mat-label>
+                <mat-select formControlName = "danUNedelji" required>
+                    <mat-option  *ngFor = "let dan of daniUNedelji" [value] = "dan.value">{{dan.viewValue}}</mat-option>
+
+                </mat-select>
+            </mat-form-field>
+            <p>Broj časova</p>
+            <mat-form-field >
+                <mat-label >Unesi broj</mat-label>
+                <input   formControlName = "brojCasova" matInput required>
+            </mat-form-field>
+            <p>Broj sale</p>
+            <mat-form-field >
+                <mat-label >Unesi salu</mat-label>
+                <input   formControlName = "brojSale" matInput required>
+            </mat-form-field>
+            <p>Vreme</p>
+            <mat-form-field >
+                <mat-label >Unesi vreme</mat-label>
+                <input   formControlName = "vreme" matInput placeholder="12h" required>
+            </mat-form-field>
+
+            <p>Opis kursa</p>
+            <mat-form-field >
+                <mat-label >Unesi opis</mat-label>
+                <textarea   formControlName = "opisKursa" matInput required></textarea>
+            </mat-form-field>
+            <div>
+            <button mat-raised-button color="primary" [disabled]="rasporedForm.invalid" (click)="dodajRasporedUTabelu(rasporedForm)">Dodaj raspored</button></div>
+        </form>
+
+                <div class="tabela mat-elevation-z8 mt-4">
+                    <table mat-table #table [dataSource]="dataSource">
+                        <!--            pravljenje kolona-->
+
+                        <ng-container matColumnDef ="danUNedelji">
+                            <th mat-header-cell  *matHeaderCellDef ><b>Dan u nedelji</b></th>
+                            <td mat-cell *matCellDef ="let raspored">{{raspored.danUNedelji}}</td>
+                        </ng-container>
+                        <ng-container matColumnDef ="brojCasova">
+                            <th mat-header-cell  *matHeaderCellDef ><b>Broj časova</b></th>
+                            <td mat-cell *matCellDef ="let raspored">{{raspored.brojCasova}}</td>
+                        </ng-container>
+                        <ng-container matColumnDef ="brojSale">
+                            <th mat-header-cell  *matHeaderCellDef ><b>Broj sale</b></th>
+                            <td mat-cell *matCellDef ="let raspored">{{raspored.brojSale}}</td>
+                        </ng-container>
+                        <ng-container matColumnDef ="vreme">
+                            <th mat-header-cell  *matHeaderCellDef ><b>Vreme</b></th>
+                            <td mat-cell *matCellDef ="let raspored">{{raspored.vreme}}</td>
+                        </ng-container>
+                        <ng-container matColumnDef ="opisKursa">
+                            <th mat-header-cell  *matHeaderCellDef ><b>Opis</b></th>
+                            <td mat-cell *matCellDef ="let raspored">{{raspored.opisKursa}}</td>
+                        </ng-container>
+                        <tr mat-header-row  *matHeaderRowDef="displayedColumns" ></tr>
+                        <tr mat-row *matRowDef="let row; columns: displayedColumns;"
+                            (click)="selection.toggle(row)"
+                            [ngClass]="{hovered: row.hovered, highlighted: selection.isSelected(row)}"
+                            (mouseover)="row.hovered = true" (mouseout)="row.hovered = false">
+                        </tr>
+                    </table>
+
+                </div>
+
+            <br>
+            <div>
+                <button mat-button matStepperPrevious>Nazad</button>
+                <button mat-button matStepperNext>Dalje</button>
+
+            </div>
+
+
+    </mat-step>
+    <mat-step>
+        <ng-template matStepLabel>Čuvanje grupe</ng-template>
+        <h2>Da li želite da sačuvate grupu?</h2>
+        <button mat-button matStepperPrevious >Nazad</button>
+        <div mat-dialog-actions align="end">
+            <button mat-button routerLink="/grupe">Otkaži</button>
+            <button mat-raised-button type = "submit"  color = "primary" (click)="sacuvajGrupu(firstFormGroup)">Sačuvaj grupu</button>
+        </div>
+    </mat-step>
+
+ </mat-stepper>
+</div>
