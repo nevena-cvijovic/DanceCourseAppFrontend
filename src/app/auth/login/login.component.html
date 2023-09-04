@@ -1,0 +1,33 @@
+<div class = "container">
+
+  <form [formGroup]="loginForm" >
+    <h1 mat-dialog-title> Uloguj se</h1>
+    <div mat-dialog-content>
+      <p>Korisničko ime:</p>
+      <mat-form-field >
+        <mat-label >Unesi ime</mat-label>
+        <input   formControlName = "korisnickoIme" matInput required>
+      </mat-form-field>
+
+      <p>Lozinka:</p>
+      <mat-form-field>
+        <mat-label>Unesi lozinku</mat-label>
+        <input matInput formControlName="lozinka" [type]="hide ? 'password' : 'text'">
+        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+      </mat-form-field>
+    </div>
+    <div mat-dialog-actions align="end">
+      <button mat-raised-button type = "submit" [disabled] = "loginForm.invalid"  color = "primary"
+      >Uloguj se</button>
+    </div>
+    <p>Nemaš nalog?</p>
+    <div mat-dialog-actions align="start">
+      <button mat-raised-button type = "button"   color = "primary" routerLink="/register"
+      >Registruj se</button>
+    </div>
+  </form>
+</div>
+
+
