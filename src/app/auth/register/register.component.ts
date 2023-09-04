@@ -1,8 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {DanceCourseService} from "../dance-course.service";
-import {Korisnik} from "../model/korisnik-model";
+import {DanceCourseService} from "../../dance-course.service";
+import {Korisnik} from "../../model/korisnik-model";
 import {HttpErrorResponse} from "@angular/common/http";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-register',
@@ -14,7 +15,7 @@ export class RegisterComponent implements OnInit{
   registerForm: FormGroup;
   hide = true;
 
-  constructor(private service: DanceCourseService) {
+  constructor(private service: DanceCourseService, public router: Router) {
 
   }
 
@@ -37,12 +38,14 @@ export class RegisterComponent implements OnInit{
     this.service.dodajKorisnika(this.registerForm.value).subscribe(
       (response: Korisnik)=>{
         console.log(response);
+        this.router.navigateByUrl("/login");
       },
       (error: HttpErrorResponse)=>{
         alert(error.message);
+
       }
     );
-    this.registerForm.reset();
+
 
   }
 }
