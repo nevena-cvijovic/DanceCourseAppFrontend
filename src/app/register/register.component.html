@@ -1,0 +1,55 @@
+<div class = "container">
+
+  <form [formGroup]="registerForm" (ngSubmit)="registruj()">
+    <h1 mat-dialog-title> Registruj se</h1>
+    <div mat-dialog-content>
+      <p>Ime:</p>
+      <mat-form-field >
+        <mat-label >Unesi ime</mat-label>
+        <input   formControlName = "ime" matInput required>
+      </mat-form-field>
+      <p>Prezime:</p>
+      <mat-form-field >
+        <mat-label >Unesi prezime</mat-label>
+        <input   formControlName = "prezime" matInput required>
+      </mat-form-field>
+      <p>Datum rođenja:</p>
+      <mat-form-field>
+        <mat-label>Datum rođenja</mat-label>
+        <input matInput formControlName="datumRodjenja" [matDatepicker]="picker" required>
+
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+      <p>Kontakt telefon:</p>
+      <mat-form-field >
+        <mat-label >Unesi broj telefona</mat-label>
+        <input   formControlName = "kontaktTelefon" matInput required placeholder="06XXXXXXXXXX">
+      </mat-form-field>
+      <p>Mejl:</p>
+      <mat-form-field>
+        <mat-label>Unesi mejl</mat-label>
+        <input matInput placeholder="mejl@primer.com" formControlName="mejl" required>
+
+      </mat-form-field>
+      <p>Korisničko ime:</p>
+      <mat-form-field >
+        <mat-label >Unesi username</mat-label>
+        <input   formControlName = "korisnickoIme" matInput required >
+      </mat-form-field>
+      <p>Lozinka:</p>
+      <mat-form-field>
+        <mat-label>Unesi lozinku</mat-label>
+        <input matInput formControlName="lozinka" [type]="hide ? 'password' : 'text'">
+        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+      </mat-form-field>
+    </div>
+    <div mat-dialog-actions align="end">
+      <button mat-raised-button type = "submit" [disabled] = "registerForm.invalid"  color = "primary"
+              >Registruj se</button>
+    </div>
+  </form>
+
+</div>
