@@ -11,6 +11,8 @@ import {RemoveKursDialogComponent} from "./remove-kurs-dialog/remove-kurs-dialog
 import {EditKursDialogComponent} from "./edit-kurs-dialog/edit-kurs-dialog.component";
 import {MatFormFieldControl} from "@angular/material/form-field";
 import { Router} from "@angular/router";
+import {AxiosService} from "../axios.service";
+import {MatTableDataSource} from "@angular/material/table";
 
 @Component({
   selector: 'app-kursevi',
@@ -23,7 +25,7 @@ export class KurseviComponent implements OnInit{
 
 
 
-  constructor(private service: DanceCourseService,public dialog:MatDialog) {
+  constructor(private service: AxiosService,public dialog:MatDialog) {
 
 
 
@@ -35,15 +37,23 @@ ngOnInit() {
 
 
     public getKursevi():void{
-    this.service.vratiKurseve().subscribe(
-      (response: Kurs[])=>{
-        this.kursevi = response;
-        console.log ( this.kursevi);
-      },
-    (error: HttpErrorResponse)=>{
-        alert(error.message)
-    }
-    )
+      this.service.request(
+        "GET",
+        "/kurs/all",
+        {}
+      ).then(
+        (response)=>{
+          this.kursevi = response.data;
+        }
+      ).catch(
+        (error)=>{
+          if(error.response.status ===401){
+            this.service.setAuthToken(null);
+          }else{
+            this.kursevi = error.response.code;
+          }
+        }
+      );
   }
 
 

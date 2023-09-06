@@ -1,22 +1,22 @@
 <div class = "container">
 
-  <form [formGroup]="registerForm" (ngSubmit)="registruj()">
+  <form #registerForm="ngForm" (ngSubmit)="registruj(registerForm)">
     <h1 mat-dialog-title> Registruj se</h1>
     <div mat-dialog-content>
       <p>Ime:</p>
       <mat-form-field >
         <mat-label >Unesi ime</mat-label>
-        <input   formControlName = "ime" matInput required>
+        <input   name = "ime" matInput required [(ngModel)]="ime">
       </mat-form-field>
       <p>Prezime:</p>
       <mat-form-field >
         <mat-label >Unesi prezime</mat-label>
-        <input   formControlName = "prezime" matInput required>
+        <input   name = "prezime" matInput required [(ngModel)]="prezime">
       </mat-form-field>
       <p>Datum rođenja:</p>
       <mat-form-field>
         <mat-label>Datum rođenja</mat-label>
-        <input matInput formControlName="datumRodjenja" [matDatepicker]="picker" required>
+        <input matInput name="datumRodjenja" [matDatepicker]="picker" required [(ngModel)]="datumRodjenja">
 
         <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
@@ -24,23 +24,23 @@
       <p>Kontakt telefon:</p>
       <mat-form-field >
         <mat-label >Unesi broj telefona</mat-label>
-        <input   formControlName = "kontaktTelefon" matInput required placeholder="06XXXXXXXXXX">
+        <input   name = "kontaktTelefon" matInput required placeholder="06XXXXXXXXXX" [(ngModel)]="kontaktTelefon">
       </mat-form-field>
       <p>Mejl:</p>
       <mat-form-field>
         <mat-label>Unesi mejl</mat-label>
-        <input matInput placeholder="mejl@primer.com" formControlName="mejl" required>
+        <input matInput placeholder="mejl@primer.com" name="mejl" required [(ngModel)]="mejl">
 
       </mat-form-field>
       <p>Korisničko ime:</p>
       <mat-form-field >
         <mat-label >Unesi username</mat-label>
-        <input   formControlName = "korisnickoIme" matInput required >
+        <input   name = "korisnickoIme" matInput required [(ngModel)]="korisnickoIme">
       </mat-form-field>
       <p>Lozinka:</p>
       <mat-form-field>
         <mat-label>Unesi lozinku</mat-label>
-        <input matInput formControlName="lozinka" [type]="hide ? 'password' : 'text'">
+        <input matInput name="lozinka" [type]="hide ? 'password' : 'text'"  [(ngModel)]="lozinka">
         <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
           <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
         </button>

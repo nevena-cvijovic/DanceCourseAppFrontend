@@ -1,11 +1,10 @@
 <nav class = "navbar navbar-expand-lg">
   <mat-toolbar color="primary">
-    <button mat-icon-button  class="example-icon" (click) = "opened =!opened" aria-label="Example icon-button with menu icon" >
+    <button mat-icon-button  class=" menu" (click) = "opened =!opened" aria-label="Example icon-button with menu icon" >
       <mat-icon>menu</mat-icon>
     </button>
     <span class = "naslov"><a routerLink="/" class = "naslov">Maravilla Arte</a></span>
-    <span><a routerLink="/kursevi">Kursevi</a></span>
-    <span><a routerLink="/plesovi">Plesovi</a></span>
+
     <span class="example-spacer"></span>
 
     <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
@@ -31,6 +30,7 @@
 
     <mat-list> <a routerLink="/plesovi">Plesovi</a></mat-list>
     <mat-list> <a routerLink="/grupe">Grupe</a></mat-list>
+    <mat-list> <a routerLink="/prijave">Prijave</a></mat-list>
   </mat-drawer>
 
 

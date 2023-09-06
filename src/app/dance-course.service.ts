@@ -8,6 +8,7 @@ import {Korisnik} from "./model/korisnik-model";
 import {Grupa} from "./model/grupa-model";
 import {RasporedKursa} from "./model/raspored-kursa-model";
 import {Prijava} from "./model/prijava-model";
+import {AxiosService} from "./axios.service";
 
 
 
@@ -18,16 +19,14 @@ export class DanceCourseService {
 
   private apiServiceUrl = environment.apiBaseUrl;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private axiosService: AxiosService) { }
 
   //METODE ZA SVE OBJEKTE
 
   //PLES
 
   //READ
-  public vratiPlesove(): Observable<Ples[]> {
-    return this.http.get<Ples[]>(`${this.apiServiceUrl}/ples/all`);
-  }
+
 
   //CREATE
   public dodajPles(ples: Ples): Observable<Ples>{

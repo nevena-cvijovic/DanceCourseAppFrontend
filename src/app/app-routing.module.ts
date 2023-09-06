@@ -6,7 +6,10 @@ import {PlesoviComponent} from "./plesovi/plesovi.component";
 import {GrupeComponent} from "./grupe/grupe.component";
 import {AddGrupaComponent} from "./grupe/add-grupa/add-grupa.component";
 import {PrijaveComponent} from "./prijave/prijave.component";
-
+import {RegisterComponent} from "./auth/register/register.component";
+import {LoginComponent} from "./auth/login/login.component";
+import {HomeKorisnikComponent} from "./home-korisnik/home-korisnik.component";
+import {authGuardGuard} from'./auth/auth-guard.guard';
 const routes: Routes = [
 
   {
@@ -19,27 +22,45 @@ const routes: Routes = [
 
     path:'kursevi',
     children: [
-      { path: '', component: KurseviComponent, title: 'Kursevi' },
+      { path: '', component: KurseviComponent, title: 'Kursevi' , canActivate:[authGuardGuard]},
 
     ],
   },
   {
     path:'plesovi',
     children:[
-      {path: '', component: PlesoviComponent, title:'Plesovi'},
+      {path: '', component: PlesoviComponent, title:'Plesovi', canActivate:[authGuardGuard]},
     ]
   },
   {
     path:'grupe',
     children:[
-      {path: '', component: GrupeComponent, title:'Grupe'},
-      {path: 'add-grupa', component: AddGrupaComponent, title: "Add grupa"}
+      {path: '', component: GrupeComponent, title:'Grupe', canActivate:[authGuardGuard]},
+      {path: 'add-grupa', component: AddGrupaComponent, title: "Add grupa", canActivate:[authGuardGuard]}
     ]
   },
   {
     path:'prijave',
     children:[
-      {path: '', component: PrijaveComponent, title:'Prijave'},
+      {path: '', component: PrijaveComponent, title:'Prijave', canActivate:[authGuardGuard]},
+    ]
+  },
+  {
+    path:'register',
+    children:[
+      {path: '', component: RegisterComponent, title:'Register'},
+    ]
+  },
+  {
+    path:'login',
+    children:[
+      {path: '', component: LoginComponent, title:'Login'},
+    ]
+  },
+  {
+    path:'maravilla-arte',
+    children:[
+      {path: '', component: HomeKorisnikComponent, title:'HomeKorisnik', canActivate:[authGuardGuard]},
     ]
   }
 

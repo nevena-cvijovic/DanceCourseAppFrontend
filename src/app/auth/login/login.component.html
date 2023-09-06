@@ -1,18 +1,18 @@
 <div class = "container">
 
-  <form [formGroup]="loginForm" >
+  <form #loginForm = "ngForm" (ngSubmit)="onSubmitLogin(loginForm)">
     <h1 mat-dialog-title> Uloguj se</h1>
     <div mat-dialog-content>
       <p>Korisničko ime:</p>
       <mat-form-field >
         <mat-label >Unesi ime</mat-label>
-        <input   formControlName = "korisnickoIme" matInput required>
+        <input   name = "korisnickoIme" matInput required [(ngModel)]="korisnickoIme">
       </mat-form-field>
 
       <p>Lozinka:</p>
       <mat-form-field>
         <mat-label>Unesi lozinku</mat-label>
-        <input matInput formControlName="lozinka" [type]="hide ? 'password' : 'text'">
+        <input matInput name="lozinka" [(ngModel)]="lozinka" [type]="hide ? 'password' : 'text'">
         <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
           <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
         </button>

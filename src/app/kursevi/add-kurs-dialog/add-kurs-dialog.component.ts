@@ -5,6 +5,8 @@ import {HttpErrorResponse} from "@angular/common/http";
 import {DanceCourseService} from "../../dance-course.service";
 import {NgForm} from "@angular/forms";
 import {Kurs} from "../../model/kurs-model";
+import {MatTableDataSource} from "@angular/material/table";
+import {AxiosService} from "../../axios.service";
 
 
 @Component({
@@ -16,7 +18,7 @@ export class AddKursDialogComponent implements OnInit{
     plesovi: Ples[];
 
     constructor(public dialogRef: MatDialogRef<AddKursDialogComponent>,
-                @Inject(MAT_DIALOG_DATA) public data: any, private service: DanceCourseService) {
+                @Inject(MAT_DIALOG_DATA) public data: any, private axiosService: AxiosService) {
     }
 
     ngOnInit(){
@@ -28,32 +30,44 @@ export class AddKursDialogComponent implements OnInit{
 
 
     public getPlesovi():void{
-        this.service.vratiPlesove().subscribe(
-            (response:Ples[])=>{
-                this.plesovi = response;
-                console.log(this.plesovi);
-            },
-            (error: HttpErrorResponse)=>{
-                alert(error.message);
-            }
-        )
+      this.axiosService.request(
+        "GET",
+        "/ples/all",
+        {}
+      ).then(
+        (response)=>{
+          this.plesovi = response.data;
+
+        }
+      ).catch(
+        (error)=>{
+          if(error.response.status ===401){
+            this.axiosService.setAuthToken(null);
+          }else{
+            this.plesovi = error.response.code;
+          }
+        }
+      );
     }
 
     dodajKurs(addForm: NgForm) {
      //   document.getElementById('add-kurs-form').click();
 
-        this.service.dodajKurs(addForm.value).subscribe(
-            (response: Kurs)=>{
-                console.log(response);
+      this.axiosService.request(
+        "POST",
+        "/kurs/add",
+        addForm.value
+      ).then(
+        (response)=>{
+          console.log(response);
+          addForm.resetForm();
+        }
+      ).catch((error)=>{
+        if(error.response.status ===401){
+          this.axiosService.setAuthToken(null);
+        }
+      })
 
-                addForm.resetForm();
-            },
-            (error: HttpErrorResponse)=>{
-                alert(error.message); // samo da prikaze gresku
-                addForm.reset(); //za ciscenje forme kako bi bila cista za novu upotrebu
-            }
-
-        )
 
         this.dialogRef.close();
     }

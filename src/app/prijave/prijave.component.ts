@@ -5,6 +5,8 @@ import {HttpErrorResponse} from "@angular/common/http";
 import {MatDialog} from "@angular/material/dialog";
 import {EditKursDialogComponent} from "../kursevi/edit-kurs-dialog/edit-kurs-dialog.component";
 import {EditPrijavaDialogComponent} from "./edit-prijava-dialog/edit-prijava-dialog.component";
+import {AxiosService} from "../axios.service";
+import {MatTableDataSource} from "@angular/material/table";
 
 @Component({
   selector: 'app-prijave',
@@ -15,22 +17,32 @@ export class PrijaveComponent implements OnInit{
 
   prijave: Prijava[];
 
-  constructor(private service: DanceCourseService,public dialog:MatDialog) {
+  constructor(private service: AxiosService,public dialog:MatDialog) {
   }
   ngOnInit() {
     this.getPrijave();
   }
 
   private getPrijave() {
-    this.service.vratiPrijave().subscribe(
-      (response: Prijava[])=>{
-        this.prijave = response;
-        console.log(this.prijave);
-      },
-      (error:HttpErrorResponse)=>{
-        alert(error.message);
+
+    this.service.request(
+      "GET",
+      "/prijava/all",
+      {}
+    ).then(
+      (response)=>{
+        this.prijave = response.data;
       }
-    )
+    ).catch(
+      (error)=>{
+        if(error.response.status ===401){
+          this.service.setAuthToken(null);
+        }else{
+          this.prijave = error.response.code;
+        }
+      }
+    );
+
   }
 
   openEditDialog(prijava: Prijava) {

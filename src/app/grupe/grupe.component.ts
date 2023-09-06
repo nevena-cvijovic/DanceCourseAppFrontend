@@ -4,6 +4,7 @@ import {DanceCourseService} from "../dance-course.service";
 import {HttpErrorResponse} from "@angular/common/http";
 import {MatDialog} from "@angular/material/dialog";
 import {RasporedDialogComponent} from "./raspored-dialog/raspored-dialog.component";
+import {AxiosService} from "../axios.service";
 
 @Component({
   selector: 'app-grupe',
@@ -13,7 +14,7 @@ import {RasporedDialogComponent} from "./raspored-dialog/raspored-dialog.compone
 export class GrupeComponent implements OnInit{
 grupe: Grupa[];
 
-constructor(private service: DanceCourseService, public dialog:MatDialog) {
+constructor(private service: AxiosService, public dialog:MatDialog) {
 }
 
 ngOnInit() {
@@ -22,15 +23,24 @@ ngOnInit() {
 }
 
 getGrupe(){
-  this.service.vratiGrupe().subscribe(
-      (response: Grupa[])=>{
-        this.grupe = response;
-        console.log(response);
-  },
-      (error: HttpErrorResponse)=>{
-        alert(error.message);
+  this.service.request(
+    "GET",
+    "/grupa/all",
+    {}
+  ).then(
+    (response)=>{
+      this.grupe = response.data;
+
+    }
+  ).catch(
+    (error)=>{
+      if(error.response.status ===401){
+        this.service.setAuthToken(null);
+      }else{
+        this.grupe = error.response.code;
       }
-  )
+    }
+  );
 }
 
     searchGrupa(key: string) {

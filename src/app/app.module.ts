@@ -38,7 +38,9 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from "@angular/material/core";
 import { PrijaveComponent } from './prijave/prijave.component';
 import { EditPrijavaDialogComponent } from './prijave/edit-prijava-dialog/edit-prijava-dialog.component';
-import { RegisterComponent } from './register/register.component';
+import { RegisterComponent } from './auth/register/register.component';
+import { LoginComponent } from './auth/login/login.component';
+import { HomeKorisnikComponent } from './home-korisnik/home-korisnik.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -58,7 +60,9 @@ import { RegisterComponent } from './register/register.component';
       AddGrupaComponent,
       PrijaveComponent,
       EditPrijavaDialogComponent,
-      RegisterComponent
+      RegisterComponent,
+      LoginComponent,
+      HomeKorisnikComponent
   ],
   imports: [
     BrowserModule,

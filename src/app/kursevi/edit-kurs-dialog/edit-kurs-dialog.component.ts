@@ -4,6 +4,8 @@ import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {DanceCourseService} from "../../dance-course.service";
 import {HttpErrorResponse} from "@angular/common/http";
 import {Kurs} from "../../model/kurs-model";
+import {AxiosService} from "../../axios.service";
+import {error} from "@angular/compiler-cli/src/transformers/util";
 
 
 @Component({
@@ -20,7 +22,7 @@ export class EditKursDialogComponent implements OnInit{
 
 
   constructor(public dialogRef: MatDialogRef<EditKursDialogComponent>,
-              @Inject(MAT_DIALOG_DATA) public data: any, private service: DanceCourseService) {
+              @Inject(MAT_DIALOG_DATA) public data: any, private axiosService: AxiosService) {
       this.kurs = this.data;
       console.log("kurs pre izmene")
       console.log(this.kurs);
@@ -41,15 +43,24 @@ export class EditKursDialogComponent implements OnInit{
     this.dialogRef.close();
   }
   public getPlesovi():void{
-    this.service.vratiPlesove().subscribe(
-        (response:Ples[])=>{
-          this.plesovi = response;
-          console.log(this.plesovi);
-        },
-        (error: HttpErrorResponse)=>{
-          alert(error.message);
+    this.axiosService.request(
+      "GET",
+      "/ples/all",
+      {}
+    ).then(
+      (response)=>{
+        this.plesovi = response.data;
+
+      }
+    ).catch(
+      (error)=>{
+        if(error.response.status ===401){
+          this.axiosService.setAuthToken(null);
+        }else{
+          this.plesovi = error.response.code;
         }
-    )
+      }
+    );
   }
 
 
@@ -61,15 +72,21 @@ export class EditKursDialogComponent implements OnInit{
       this.kurs.trajanjeUNedeljama = k.trajanjeUNedeljama;
       this.kurs.nazivKursa = k.nazivKursa;
 
+      this.axiosService.request(
+        "PUT",
+        "kurs/update",
+        this.kurs
+      ).then(
+        (response)=>{
+          console.log(response.data);
+        }
+      ).catch((error)=>{
+        if(error.response.status ===401){
+          this.axiosService.setAuthToken(null);
+        }
+      })
 
-        this.service.izmeniKurs(this.kurs).subscribe(
-            (response: Kurs)=>{
-                console.log(response);
-            },
-            (error: HttpErrorResponse)=>{
-                alert(error.message);
-            }
-        )
+
 
         this.dialogRef.close();
     }

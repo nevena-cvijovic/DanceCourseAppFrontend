@@ -4,6 +4,7 @@ import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {DanceCourseService} from "../../dance-course.service";
 import {Ples} from "../../model/ples-model";
 import {HttpErrorResponse} from "@angular/common/http";
+import {AxiosService} from "../../axios.service";
 @Component({
   selector: 'app-add-ples-dialog',
   templateUrl: './add-ples-dialog.component.html',
@@ -12,7 +13,7 @@ import {HttpErrorResponse} from "@angular/common/http";
 export class AddPlesDialogComponent {
 
   constructor(public dialogRef: MatDialogRef<AddPlesDialogComponent>,
-              @Inject(MAT_DIALOG_DATA) public data: any, private service: DanceCourseService) {
+              @Inject(MAT_DIALOG_DATA) public data: any, private service: AxiosService) {
   }
 
   onCancelClick() {
@@ -20,16 +21,24 @@ export class AddPlesDialogComponent {
   }
 
   dodajPles(addForm: NgForm) {
-    this.service.dodajPles(addForm.value).subscribe(
-        (response: Ples)=>{
-          console.log(response);
-          addForm.resetForm();
-        },
-        (error: HttpErrorResponse)=>{
-          alert(error.message);
-          addForm.resetForm();
+    this.service.request(
+      "POST",
+      "ples/add",
+      addForm.value
+    ).then(
+      (response)=>{
+        console.log(response);
+        addForm.resetForm();
+      }
+    ).catch(
+      (error)=>{
+        if(error.response.status ===401){
+          this.service.setAuthToken(null);
         }
-    );
+        addForm.resetForm();
+      }
+    )
+
     this.dialogRef.close();
   }
 }

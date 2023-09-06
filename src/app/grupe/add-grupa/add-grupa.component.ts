@@ -8,6 +8,7 @@ import {MatTableDataSource} from "@angular/material/table";
 import {SelectionModel} from "@angular/cdk/collections";
 import {Grupa} from "../../model/grupa-model";
 import {Router} from "@angular/router";
+import {AxiosService} from "../../axios.service";
 
 interface DanUNedelji{
   value: string,
@@ -41,7 +42,7 @@ export class AddGrupaComponent implements OnInit{
 // @ts-ignore
   dataSource:any;
   displayedColumns: string[]= ['danUNedelji','brojCasova','brojSale','vreme','opisKursa'];
-  constructor(private service: DanceCourseService,private router: Router) {
+  constructor(private service: AxiosService,private router: Router) {
     this.dataSource = new MatTableDataSource(this.rasporedi);
   }
   highlight(highlighted: boolean) {
@@ -71,14 +72,22 @@ export class AddGrupaComponent implements OnInit{
   }
 
   getKursevi(){
-    this.service.vratiKurseve().subscribe(
-        (response: Kurs[])=>{
-          console.log(response);
-          this.kursevi=response;
-    },
-    (error:HttpErrorResponse)=>{
-          alert(error.message);
-    }
+    this.service.request(
+      "GET",
+      "/kurs/all",
+      {}
+    ).then(
+      (response)=>{
+        this.kursevi = response.data;
+      }
+    ).catch(
+      (error)=>{
+        if(error.response.status ===401){
+          this.service.setAuthToken(null);
+        }else{
+          this.kursevi = error.response.code;
+        }
+      }
     )
   }
 
@@ -99,20 +108,29 @@ export class AddGrupaComponent implements OnInit{
     console.log(this.grupa.rasporediKurseva)
     console.log("grupa nakon ubacivanja rasporeda");
     console.log(this.grupa);
-    this.service.dodajGrupu(this.grupa).subscribe(
-        (response: Grupa)=>{
-          console.log(response);
-          firstFormGroup.reset();
-          this.rasporedi=[];
-          this.dataSource = new MatTableDataSource(this.rasporedi);
-    },
-        (error: HttpErrorResponse)=>{
-          alert(error.message);
-          firstFormGroup.reset();
-          this.rasporedi=[];
-          this.dataSource = new MatTableDataSource(this.rasporedi);
+    this.service.request(
+      "POST",
+      "/grupa/add",
+      this.grupa
+
+    ).then(
+      (response)=>{
+        this.rasporedi=[];
+        this.dataSource = new MatTableDataSource(this.rasporedi);
+
+      }
+    ).catch(
+      (error)=>{
+        this.rasporedi=[];
+        this.dataSource = new MatTableDataSource(this.rasporedi);
+        if(error.response.status ===401){
+          this.service.setAuthToken(null);
+        }else{
+         console.log(error.response.code);
         }
-    );
+      }
+    )
+
 
     this.router.navigateByUrl("/grupe");
 

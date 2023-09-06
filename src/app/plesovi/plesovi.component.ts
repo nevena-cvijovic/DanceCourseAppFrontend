@@ -6,6 +6,7 @@ import {MatTableDataSource} from "@angular/material/table";
 import {MatDialog} from "@angular/material/dialog";
 import {AddPlesDialogComponent} from "./add-ples-dialog/add-ples-dialog.component";
 import {SelectionModel} from "@angular/cdk/collections";
+import {AxiosService} from "../axios.service";
 
 
 @Component({
@@ -15,14 +16,14 @@ import {SelectionModel} from "@angular/cdk/collections";
 })
 export class PlesoviComponent implements OnInit{
 
-  plesovi: Ples[];
+  plesovi: Ples[]=[];
   displayedColumns: string[] = [ 'nazivPlesa'];
     selection = new SelectionModel<Ples>(false, []);
   dataSource:any;
 
     color: ' #801ca4';
 
-constructor(private service: DanceCourseService,public dialog:MatDialog) {
+constructor(private service: AxiosService,public dialog:MatDialog) {
 }
 
 ngOnInit() {
@@ -31,16 +32,25 @@ ngOnInit() {
 }
 
   public getPlesovi():void{
-    this.service.vratiPlesove().subscribe(
-        (response:Ples[])=>{
-          this.plesovi = response;
-          console.log(this.plesovi);
-          this.dataSource = new MatTableDataSource(this.plesovi);
-        },
-        (error: HttpErrorResponse)=>{
-          alert(error.message);
+
+    this.service.request(
+      "GET",
+      "/ples/all",
+      {}
+    ).then(
+      (response)=>{
+        this.plesovi = response.data;
+        this.dataSource = new MatTableDataSource(this.plesovi);
+      }
+    ).catch(
+      (error)=>{
+        if(error.response.status ===401){
+          this.service.setAuthToken(null);
+        }else{
+          this.plesovi = error.response.code;
         }
-    )
+      }
+    );
   }
 
     searchPles(key: string) {
