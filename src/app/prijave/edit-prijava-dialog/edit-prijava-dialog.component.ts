@@ -1,10 +1,16 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
+import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from "@angular/material/dialog";
 import {DanceCourseService} from "../../dance-course.service";
 import {Prijava} from "../../model/prijava-model";
 import {Grupa} from "../../model/grupa-model";
 import {HttpErrorResponse} from "@angular/common/http";
 import {AxiosService} from "../../axios.service";
+import {
+  UspesnoIzmenjenaPrijavaDialogComponent
+} from "../uspesno-izmenjena-prijava-dialog/uspesno-izmenjena-prijava-dialog.component";
+import {
+  NeuspesnoIzmenjenaPrijavaDialogComponent
+} from "../neuspesno-izmenjena-prijava-dialog/neuspesno-izmenjena-prijava-dialog.component";
 
 @Component({
   selector: 'app-edit-prijava-dialog',
@@ -16,7 +22,7 @@ export class EditPrijavaDialogComponent implements OnInit{
   prijava: Prijava;
   grupe: Grupa[]=[];
   constructor(public dialogRef: MatDialogRef<EditPrijavaDialogComponent>,
-              @Inject(MAT_DIALOG_DATA) public data: any, private service: AxiosService) {
+              @Inject(MAT_DIALOG_DATA) public data: any, private service: AxiosService, public dialog:MatDialog) {
 
     this.prijava = this.data;
     console.log("prijava pre izmene");
@@ -68,6 +74,7 @@ export class EditPrijavaDialogComponent implements OnInit{
     ).then(
       (response)=>{
         console.log(response.data);
+        const dialogRef = this.dialog.open(UspesnoIzmenjenaPrijavaDialogComponent);
       }
     ).catch(
       (error)=>{
@@ -75,6 +82,8 @@ export class EditPrijavaDialogComponent implements OnInit{
         if(error.response.status ===401){
           this.service.setAuthToken(null);
         }
+
+        const dialogRef = this.dialog.open(NeuspesnoIzmenjenaPrijavaDialogComponent);
       }
     )
 

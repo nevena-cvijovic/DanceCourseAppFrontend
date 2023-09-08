@@ -45,6 +45,7 @@ import { UspesnaPrijavaAlertDialogComponent } from './home-korisnik/uspesna-prij
 import { AddPrijavaDialogComponent } from './home-korisnik/add-prijava-dialog/add-prijava-dialog.component';
 import { UspesnoDodatPlesDialogComponent } from './plesovi/uspesno-dodat-ples-dialog/uspesno-dodat-ples-dialog.component';
 import { UspesnoIzmenjenaPrijavaDialogComponent } from './prijave/uspesno-izmenjena-prijava-dialog/uspesno-izmenjena-prijava-dialog.component';
+import { NeuspesnoIzmenjenaPrijavaDialogComponent } from './prijave/neuspesno-izmenjena-prijava-dialog/neuspesno-izmenjena-prijava-dialog.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -70,7 +71,8 @@ import { UspesnoIzmenjenaPrijavaDialogComponent } from './prijave/uspesno-izmenj
       UspesnaPrijavaAlertDialogComponent,
     AddPrijavaDialogComponent,
     UspesnoDodatPlesDialogComponent,
-    UspesnoIzmenjenaPrijavaDialogComponent
+    UspesnoIzmenjenaPrijavaDialogComponent,
+    NeuspesnoIzmenjenaPrijavaDialogComponent
   ],
   imports: [
     BrowserModule,
