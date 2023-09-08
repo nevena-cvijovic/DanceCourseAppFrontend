@@ -1,0 +1,77 @@
+<nav class = "navbar navbar-expand-lg">
+  <mat-toolbar color="primary">
+
+    <span class = "naslov"><a routerLink="/home-korisnik" class = "naslov">Maravilla Arte</a></span>
+
+    <span class="example-spacer"></span>
+
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon" (click) = logOut()>
+      <mat-icon>exit_to_app</mat-icon>
+    </button>
+
+  </mat-toolbar>
+
+
+</nav>
+<div class = "container" id = "main-container">
+
+  <div class="searchbar mt-4">
+    <form class = "form-inline my-2 my-lg-0">
+
+      <input type = "search" (ngModelChange) = "searchKurs(key.value)" #key ="ngModel" ngModel name = "key" id="searchName" class = "form-control" placeholder="Pretraži kurseve" required/>
+
+    </form>
+  </div>
+
+  <div class = "row">
+    <!-- ovde pozivamo sa ngFor sve zaposlene iz baze da imaju ovakav izgled kartica -->
+    <div *ngFor="let kurs of kursevi" class="col-md-6 col-xl-3">
+      <mat-card class="card m-b-30">
+        <mat-card-header class="card-body ">
+
+          <mat-card-title class="card-title text-center ">
+            <b>{{ kurs?.nazivKursa }}</b>
+
+          </mat-card-title>
+
+
+
+        </mat-card-header>
+        <br>
+        <mat-divider></mat-divider>
+        <mat-card-content>
+
+
+          <mat-list class="list-group-item">
+            <b>Ples:</b> {{ kurs?.ples.nazivPlesa }}
+          </mat-list>
+          <mat-divider></mat-divider>
+          <mat-list class="list-group-item">
+            <b>Trajanje u nedeljama:</b> {{ kurs?.trajanjeUNedeljama }}
+          </mat-list>
+
+        </mat-card-content>
+        <mat-divider></mat-divider>
+        <mat-card-actions class="card-body" align="end">
+          <div class="float-right btn-group btn-group-sm" >
+            <!-- dugmad za edit i za delete -->
+            <button mat-raised-button type = "button" class="example-icon" aria-label="Example icon-button with share icon"  (click) = prijava(kurs)>
+              <b>Prijavi se</b>
+            </button>
+
+
+
+          </div>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+</div>

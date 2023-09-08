@@ -1,0 +1,165 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&display=swap');
+@import "https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css";
+@import "https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css";
+
+
+:host {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.body {
+  flex-grow: 1;
+  margin: 0 2rem;
+}
+.example-container {
+  flex-grow: 1;
+  width: 100%;
+  height: 100%;
+
+  /*border: 1px solid rgba(0, 0, 0, 0.5);*/
+}
+
+.example-sidenav-content {
+  flex-grow: 1;
+  margin: 0 2rem;
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.example-sidenav {
+  padding: 10px;
+  background-color: #801ca4;
+  width: 260px;
+}
+
+
+.dugmadMeni{
+  margin: 0;
+  padding: 1rem;
+
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  color: white;
+  text-decoration: none;
+
+  &:hover {
+    background-color: blueviolet;
+  }
+}
+
+a {
+  margin: 0;
+  padding: 1rem;
+
+  list-style-type: none;
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  color: white;
+  text-decoration: none;
+
+  &:hover {
+    background-color: blueviolet;
+  }
+}
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+nav{
+  margin:0;
+  padding: 0;
+  /*background-color: rebeccapurple;*/
+
+}
+.naslov{
+  margin: 0;
+  padding: 1rem;
+  /*background-color: rebeccapurple;*/
+  list-style-type: none;
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  color: white;
+  text-decoration: none;
+  font-family: 'Dancing Script', cursive;
+  font-size: xx-large;
+}
+
+
+
+.card {
+  /*border: none;*/
+  -webkit-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  /*box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);*/
+  border-color: #801ca4;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(128, 28, 164, 1);
+
+  margin-bottom: 30px;
+  margin-top: 30px;
+  background-color: #801ca4;
+
+}
+.list-group, .list-group-item {
+  border: none;
+  /*-webkit-box-shadow: 0 1px 2px 0 #eeee;*/
+  /*box-shadow: 0 1px 2px 0 #eeee;*/
+
+  background-color: #801ca4;
+}
+.addButton{
+  margin-left: 15px;
+
+  margin-top: 30px;
+
+}
+.searchbar{
+  margin-left: 15px;
+}
+.card-body{
+  font-size: large;
+  text-align: center;
+}
+h5{
+  color: black;
+}
+
+.container{
+
+
+  color: white;
+
+}
+#main-container{
+
+}
+.row{
+  margin: 0px;
+  width: 100%;
+}
+.form-control{
+  color:white;
+  outline-color: #801ca4;
+  border-inline-color: #801ca4;
+  border-color: #801ca4;
+  background-color: #303030;
+}
+.form-control:focus {
+  border-color: blueviolet;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(128, 28, 164, 1);
+
+}
+input[type="search"]::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  background: url(https://pro.fontawesome.com/releases/v5.10.0/svgs/solid/times-circle.svg) no-repeat 50% 50%;
+}
