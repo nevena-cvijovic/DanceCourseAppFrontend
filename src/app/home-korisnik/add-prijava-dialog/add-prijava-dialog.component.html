@@ -1,0 +1,13 @@
+<h1 mat-dialog-title class="title">Prijava na kurs: {{kurs.nazivKursa}} </h1>
+<div mat-dialog-content>
+
+  <p> Ukoliko imaš da dodaš neku napomenu, možeš je ostaviti ovde:</p>
+  <mat-form-field >
+    <mat-label >Napomena</mat-label>
+    <textarea   name = "napomena" matInput [(ngModel)]="napomena"></textarea>
+  </mat-form-field>
+
+</div>
+<div mat-dialog-actions align="end">
+  <button mat-raised-button mat-dialog-close color = "primary" (click)="dodajPrijavu()"><b>Pošalji prijavu</b></button>
+</div>
