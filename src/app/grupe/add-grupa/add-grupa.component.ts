@@ -20,6 +20,7 @@ interface DanUNedelji{
   styleUrls: ['./add-grupa.component.css']
 })
 export class AddGrupaComponent implements OnInit{
+   opened = false;
 
   kursevi: Kurs[];
   firstFormGroup:FormGroup;

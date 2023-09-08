@@ -1,10 +1,11 @@
 import {Component, Inject} from '@angular/core';
 import {NgForm} from "@angular/forms";
-import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
+import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from "@angular/material/dialog";
 import {DanceCourseService} from "../../dance-course.service";
 import {Ples} from "../../model/ples-model";
 import {HttpErrorResponse} from "@angular/common/http";
 import {AxiosService} from "../../axios.service";
+import {UspesnoDodatPlesDialogComponent} from "../uspesno-dodat-ples-dialog/uspesno-dodat-ples-dialog.component";
 @Component({
   selector: 'app-add-ples-dialog',
   templateUrl: './add-ples-dialog.component.html',
@@ -13,7 +14,7 @@ import {AxiosService} from "../../axios.service";
 export class AddPlesDialogComponent {
 
   constructor(public dialogRef: MatDialogRef<AddPlesDialogComponent>,
-              @Inject(MAT_DIALOG_DATA) public data: any, private service: AxiosService) {
+              @Inject(MAT_DIALOG_DATA) public data: any, private service: AxiosService, public dialog: MatDialog) {
   }
 
   onCancelClick() {
@@ -29,6 +30,7 @@ export class AddPlesDialogComponent {
       (response)=>{
         console.log(response);
         addForm.resetForm();
+        const dialogRef = this.dialog.open(UspesnoDodatPlesDialogComponent);
       }
     ).catch(
       (error)=>{
