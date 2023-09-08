@@ -49,6 +49,8 @@ import { NeuspesnoIzmenjenaPrijavaDialogComponent } from './prijave/neuspesno-iz
 import { UspesnoDodataGrupaDialogComponent } from './grupe/uspesno-dodata-grupa-dialog/uspesno-dodata-grupa-dialog.component';
 import { NeuspesnoDodataGrupaDialogComponent } from './grupe/neuspesno-dodata-grupa-dialog/neuspesno-dodata-grupa-dialog.component';
 import { NeuspesnoKreiranaPrijavaDialogComponent } from './home-korisnik/neuspesno-kreirana-prijava-dialog/neuspesno-kreirana-prijava-dialog.component';
+import { UspesnoKreiranNalogDialogComponent } from './auth/register/uspesno-kreiran-nalog-dialog/uspesno-kreiran-nalog-dialog.component';
+import { NeuspesnoKreiranNalogDialogComponent } from './auth/register/neuspesno-kreiran-nalog-dialog/neuspesno-kreiran-nalog-dialog.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -78,7 +80,9 @@ import { NeuspesnoKreiranaPrijavaDialogComponent } from './home-korisnik/neuspes
     NeuspesnoIzmenjenaPrijavaDialogComponent,
     UspesnoDodataGrupaDialogComponent,
     NeuspesnoDodataGrupaDialogComponent,
-    NeuspesnoKreiranaPrijavaDialogComponent
+    NeuspesnoKreiranaPrijavaDialogComponent,
+    UspesnoKreiranNalogDialogComponent,
+    NeuspesnoKreiranNalogDialogComponent
   ],
   imports: [
     BrowserModule,

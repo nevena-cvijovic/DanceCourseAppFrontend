@@ -85,6 +85,7 @@ this.korisnik = response.data;
       error => {
         this.axiosService.setAuthToken(null);
 
+        this.korisnik=null;
       }
     );
     return this.korisnik;

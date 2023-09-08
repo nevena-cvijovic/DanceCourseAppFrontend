@@ -6,6 +6,13 @@ import {HttpErrorResponse} from "@angular/common/http";
 import {Router} from "@angular/router";
 import {AxiosService} from "../../axios.service";
 import {AuthServiceService} from "../auth-service.service";
+import {MatDialog} from "@angular/material/dialog";
+import {
+  UspesnoKreiranNalogDialogComponent
+} from "./uspesno-kreiran-nalog-dialog/uspesno-kreiran-nalog-dialog.component";
+import {
+  NeuspesnoKreiranNalogDialogComponent
+} from "./neuspesno-kreiran-nalog-dialog/neuspesno-kreiran-nalog-dialog.component";
 
 @Component({
   selector: 'app-register',
@@ -25,7 +32,7 @@ kor:Korisnik;
   korisnickoIme: string="";
   lozinka:string="";
 
-  constructor(private axiosService: AxiosService, public router: Router, private authService: AuthServiceService) {
+  constructor(private axiosService: AxiosService, public router: Router, private authService: AuthServiceService, public dialog: MatDialog) {
 
   }
 
@@ -37,6 +44,12 @@ kor:Korisnik;
     this.kor = registerForm.value;
     this.korisnik = this.authService.register(this.kor);
 
+if(this.korisnik!==null){
+  this.dialog.open(UspesnoKreiranNalogDialogComponent);
+this.router.navigateByUrl("/login");
+}else{
+  this.dialog.open(NeuspesnoKreiranNalogDialogComponent);
+}
 
 
 
