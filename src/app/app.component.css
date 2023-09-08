@@ -11,7 +11,8 @@
 
 .body {
   flex-grow: 1;
-  margin: 0 2rem;
+  margin: 0;
+  background-color: #303030;
 }
 .example-container {
   flex-grow: 1;

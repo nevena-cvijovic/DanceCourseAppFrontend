@@ -1,46 +1,13 @@
-<nav class = "navbar navbar-expand-lg">
-  <mat-toolbar color="primary">
-    <button mat-icon-button  class=" menu" (click) = "opened =!opened" aria-label="Example icon-button with menu icon" >
-      <mat-icon>menu</mat-icon>
-    </button>
-    <span class = "naslov"><a routerLink="/" class = "naslov">Maravilla Arte</a></span>
-
-    <span class="example-spacer"></span>
-
-    <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
-     <mat-icon>exit_to_app</mat-icon>
-    </button>
-
-  </mat-toolbar>
-
-
-</nav>
-<mat-drawer-container class="example-container" autosize>
-  <mat-drawer #drawer class="example-sidenav" mode="side" [(opened)] = "opened">
-
-
-
-
-  <mat-list> <a routerLink="/">Početna strana</a></mat-list>
-
-
-
-    <mat-list>
-      <a routerLink="/kursevi">Kursevi</a></mat-list>
-
-    <mat-list> <a routerLink="/plesovi">Plesovi</a></mat-list>
-    <mat-list> <a routerLink="/grupe">Grupe</a></mat-list>
-    <mat-list> <a routerLink="/prijave">Prijave</a></mat-list>
-  </mat-drawer>
 
 
   <div class="body">
+
     <router-outlet />
 
 
 
   </div>
-</mat-drawer-container>
+
 
 
 

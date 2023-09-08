@@ -41,6 +41,10 @@ import { EditPrijavaDialogComponent } from './prijave/edit-prijava-dialog/edit-p
 import { RegisterComponent } from './auth/register/register.component';
 import { LoginComponent } from './auth/login/login.component';
 import { HomeKorisnikComponent } from './home-korisnik/home-korisnik.component';
+import { UspesnaPrijavaAlertDialogComponent } from './home-korisnik/uspesna-prijava-alert-dialog/uspesna-prijava-alert-dialog.component';
+import { AddPrijavaDialogComponent } from './home-korisnik/add-prijava-dialog/add-prijava-dialog.component';
+import { UspesnoDodatPlesDialogComponent } from './plesovi/uspesno-dodat-ples-dialog/uspesno-dodat-ples-dialog.component';
+import { UspesnoIzmenjenaPrijavaDialogComponent } from './prijave/uspesno-izmenjena-prijava-dialog/uspesno-izmenjena-prijava-dialog.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -62,7 +66,11 @@ import { HomeKorisnikComponent } from './home-korisnik/home-korisnik.component';
       EditPrijavaDialogComponent,
       RegisterComponent,
       LoginComponent,
-      HomeKorisnikComponent
+      HomeKorisnikComponent,
+      UspesnaPrijavaAlertDialogComponent,
+    AddPrijavaDialogComponent,
+    UspesnoDodatPlesDialogComponent,
+    UspesnoIzmenjenaPrijavaDialogComponent
   ],
   imports: [
     BrowserModule,

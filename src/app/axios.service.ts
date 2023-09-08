@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import axios from 'axios';
 import {environment} from "../environments/environment";
+import {AuthServiceService} from "./auth/auth-service.service";
 @Injectable({
   providedIn: 'root'
 })
@@ -21,6 +22,7 @@ export class AxiosService {
       window.localStorage.setItem("auth_token", token);
     } else {
       window.localStorage.removeItem("auth_token");
+
     }
   }
 

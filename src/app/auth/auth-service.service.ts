@@ -2,9 +2,11 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {environment} from "../../environments/environment";
 import {AxiosService} from "../axios.service";
+import {Korisnik} from "../model/korisnik-model";
+import {Router} from "@angular/router";
 
 
-export interface Korisnik{
+export interface KorisnikData{
   idKorisnika?: number;
   ime?: string;
   prezime?: string;
@@ -19,14 +21,20 @@ export interface Korisnik{
 })
 export class AuthServiceService{
   private apiServiceUrl = environment.apiBaseUrl;
-  korisnik:Korisnik;
-  constructor(private http: HttpClient, private axiosService: AxiosService) { }
+  public korisnik:Korisnik;
+  constructor(private http: HttpClient, private axiosService: AxiosService, public router: Router) { }
   private _isUserAuthenticated = false;
 
 isLoggedIn(){
     return !!localStorage.getItem('auth_token');
 }
 
+getKorisnik(){
+  if(this.korisnik!=null){
+    return this.korisnik;
+  }
+  return null;
+}
 logIn(korisnickoIme:string, lozinka:string):Korisnik{
   this._isUserAuthenticated = true;
   this.axiosService.request(
@@ -40,6 +48,7 @@ logIn(korisnickoIme:string, lozinka:string):Korisnik{
     response => {
       this.axiosService.setAuthToken(response.data.token);
       this.korisnik= response.data;
+      console.log(this.korisnik);
 
     }).catch(
     error => {
@@ -52,6 +61,8 @@ logIn(korisnickoIme:string, lozinka:string):Korisnik{
 }
 logOut(){
   this.axiosService.setAuthToken(null);
+  this.korisnik = null;
+  this.router.navigateByUrl("");
 }
   register(kor: Korisnik) {
     this._isUserAuthenticated = true;
@@ -69,12 +80,13 @@ logOut(){
       }).then(
       response => {
         this.axiosService.setAuthToken(response.data.token);
-
+this.korisnik = response.data;
       }).catch(
       error => {
         this.axiosService.setAuthToken(null);
 
       }
     );
+    return this.korisnik;
   }
 }
