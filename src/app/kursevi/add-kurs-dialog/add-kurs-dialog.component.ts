@@ -1,5 +1,5 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
+import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from "@angular/material/dialog";
 import {Ples} from "../../model/ples-model";
 import {HttpErrorResponse} from "@angular/common/http";
 import {DanceCourseService} from "../../dance-course.service";
@@ -7,6 +7,8 @@ import {NgForm} from "@angular/forms";
 import {Kurs} from "../../model/kurs-model";
 import {MatTableDataSource} from "@angular/material/table";
 import {AxiosService} from "../../axios.service";
+import {UspesnoSacuvanKursComponent} from "../uspesno-sacuvan-kurs/uspesno-sacuvan-kurs.component";
+import {NeuspesnoSacuvanKursComponent} from "../neuspesno-sacuvan-kurs/neuspesno-sacuvan-kurs.component";
 
 
 @Component({
@@ -18,7 +20,7 @@ export class AddKursDialogComponent implements OnInit{
     plesovi: Ples[];
 
     constructor(public dialogRef: MatDialogRef<AddKursDialogComponent>,
-                @Inject(MAT_DIALOG_DATA) public data: any, private axiosService: AxiosService) {
+                @Inject(MAT_DIALOG_DATA) public data: any, private axiosService: AxiosService, public dialog: MatDialog) {
     }
 
     ngOnInit(){
@@ -60,12 +62,14 @@ export class AddKursDialogComponent implements OnInit{
       ).then(
         (response)=>{
           console.log(response);
-          addForm.resetForm();
+          this.dialog.open(UspesnoSacuvanKursComponent);
+
         }
       ).catch((error)=>{
         if(error.response.status ===401){
           this.axiosService.setAuthToken(null);
         }
+        this.dialog.open(NeuspesnoSacuvanKursComponent);
       })
 
 

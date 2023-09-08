@@ -53,6 +53,10 @@ import { UspesnoKreiranNalogDialogComponent } from './auth/register/uspesno-krei
 import { NeuspesnoKreiranNalogDialogComponent } from './auth/register/neuspesno-kreiran-nalog-dialog/neuspesno-kreiran-nalog-dialog.component';
 import { UspesnoLogovanjeDialogComponent } from './auth/login/uspesno-logovanje-dialog/uspesno-logovanje-dialog.component';
 import { NeuspesnoLogovanjeDialogComponent } from './auth/login/neuspesno-logovanje-dialog/neuspesno-logovanje-dialog.component';
+import { UspesnoSacuvanKursComponent } from './kursevi/uspesno-sacuvan-kurs/uspesno-sacuvan-kurs.component';
+import { NeuspesnoSacuvanKursComponent } from './kursevi/neuspesno-sacuvan-kurs/neuspesno-sacuvan-kurs.component';
+import { UspesnoObrisanKursDialogComponent } from './kursevi/remove-kurs-dialog/uspesno-obrisan-kurs-dialog/uspesno-obrisan-kurs-dialog.component';
+import { NeuspesnoObrisanKursDialogComponent } from './kursevi/remove-kurs-dialog/neuspesno-obrisan-kurs-dialog/neuspesno-obrisan-kurs-dialog.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -86,7 +90,11 @@ import { NeuspesnoLogovanjeDialogComponent } from './auth/login/neuspesno-logova
     UspesnoKreiranNalogDialogComponent,
     NeuspesnoKreiranNalogDialogComponent,
     UspesnoLogovanjeDialogComponent,
-    NeuspesnoLogovanjeDialogComponent
+    NeuspesnoLogovanjeDialogComponent,
+    UspesnoSacuvanKursComponent,
+    NeuspesnoSacuvanKursComponent,
+    UspesnoObrisanKursDialogComponent,
+    NeuspesnoObrisanKursDialogComponent
   ],
   imports: [
     BrowserModule,
