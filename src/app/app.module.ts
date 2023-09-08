@@ -51,6 +51,8 @@ import { NeuspesnoDodataGrupaDialogComponent } from './grupe/neuspesno-dodata-gr
 import { NeuspesnoKreiranaPrijavaDialogComponent } from './home-korisnik/neuspesno-kreirana-prijava-dialog/neuspesno-kreirana-prijava-dialog.component';
 import { UspesnoKreiranNalogDialogComponent } from './auth/register/uspesno-kreiran-nalog-dialog/uspesno-kreiran-nalog-dialog.component';
 import { NeuspesnoKreiranNalogDialogComponent } from './auth/register/neuspesno-kreiran-nalog-dialog/neuspesno-kreiran-nalog-dialog.component';
+import { UspesnoLogovanjeDialogComponent } from './auth/login/uspesno-logovanje-dialog/uspesno-logovanje-dialog.component';
+import { NeuspesnoLogovanjeDialogComponent } from './auth/login/neuspesno-logovanje-dialog/neuspesno-logovanje-dialog.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -82,7 +84,9 @@ import { NeuspesnoKreiranNalogDialogComponent } from './auth/register/neuspesno-
     NeuspesnoDodataGrupaDialogComponent,
     NeuspesnoKreiranaPrijavaDialogComponent,
     UspesnoKreiranNalogDialogComponent,
-    NeuspesnoKreiranNalogDialogComponent
+    NeuspesnoKreiranNalogDialogComponent,
+    UspesnoLogovanjeDialogComponent,
+    NeuspesnoLogovanjeDialogComponent
   ],
   imports: [
     BrowserModule,

@@ -4,6 +4,9 @@ import {AuthServiceService} from "../auth-service.service";
 import {AxiosService} from "../../axios.service";
 import {Route, Router} from "@angular/router";
 import {Korisnik} from "../../model/korisnik-model";
+import {MatDialog} from "@angular/material/dialog";
+import {UspesnoLogovanjeDialogComponent} from "./uspesno-logovanje-dialog/uspesno-logovanje-dialog.component";
+import {NeuspesnoLogovanjeDialogComponent} from "./neuspesno-logovanje-dialog/neuspesno-logovanje-dialog.component";
 
 
 @Component({
@@ -16,7 +19,7 @@ export class LoginComponent {
 
 
 
-  constructor(private axiosService: AxiosService, private authService: AuthServiceService, public router:Router) {
+  constructor(private axiosService: AxiosService, private authService: AuthServiceService, public router:Router, public dialog: MatDialog) {
   }
 
 korisnickoIme: string="";
@@ -28,11 +31,14 @@ onSubmitLogin(loginForm: NgForm):void{
 this.korisnik = this.authService.logIn(this.korisnickoIme, this.lozinka);
 console.log(this.korisnik)
 if(this.korisnik!=null){
+  this.dialog.open(UspesnoLogovanjeDialogComponent);
 if(this.korisnik.korisnickoIme ==="admin"){
   this.router.navigateByUrl("/kursevi")
 }else{
   this.router.navigateByUrl("/maravilla-arte")
 }
+}else{
+  this.dialog.open(NeuspesnoLogovanjeDialogComponent);
 }
   }
 

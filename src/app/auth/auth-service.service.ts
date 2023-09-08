@@ -51,9 +51,10 @@ logIn(korisnickoIme:string, lozinka:string):Korisnik{
       console.log(this.korisnik);
 
     }).catch(
-    error => {
+    (error) => {
       this.axiosService.setAuthToken(null);
 
+      this.korisnik=null;
 
     }
   );
@@ -82,7 +83,7 @@ logOut(){
         this.axiosService.setAuthToken(response.data.token);
 this.korisnik = response.data;
       }).catch(
-      error => {
+      (error) => {
         this.axiosService.setAuthToken(null);
 
         this.korisnik=null;
