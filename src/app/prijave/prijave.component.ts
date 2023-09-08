@@ -7,6 +7,7 @@ import {EditKursDialogComponent} from "../kursevi/edit-kurs-dialog/edit-kurs-dia
 import {EditPrijavaDialogComponent} from "./edit-prijava-dialog/edit-prijava-dialog.component";
 import {AxiosService} from "../axios.service";
 import {MatTableDataSource} from "@angular/material/table";
+import {AuthServiceService} from "../auth/auth-service.service";
 
 @Component({
   selector: 'app-prijave',
@@ -14,10 +15,10 @@ import {MatTableDataSource} from "@angular/material/table";
   styleUrls: ['./prijave.component.css']
 })
 export class PrijaveComponent implements OnInit{
-
+   opened = false;
   prijave: Prijava[];
 
-  constructor(private service: AxiosService,public dialog:MatDialog) {
+  constructor(private service: AxiosService,public dialog:MatDialog, private authService: AuthServiceService) {
   }
   ngOnInit() {
     this.getPrijave();
@@ -47,6 +48,7 @@ export class PrijaveComponent implements OnInit{
 
   openEditDialog(prijava: Prijava) {
     const dialogRef = this.dialog.open(EditPrijavaDialogComponent,{
+      width:"550px",
       data: prijava
     });
     dialogRef.afterClosed().subscribe(result =>{
@@ -55,5 +57,9 @@ export class PrijaveComponent implements OnInit{
 
 
     });
+  }
+
+  logOut(){
+    this.authService.logOut();
   }
 }
