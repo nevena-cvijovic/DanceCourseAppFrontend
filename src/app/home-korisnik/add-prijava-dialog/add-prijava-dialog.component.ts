@@ -11,6 +11,9 @@ import {Ples} from "../../model/ples-model";
 import {
   UspesnaPrijavaAlertDialogComponent
 } from "../uspesna-prijava-alert-dialog/uspesna-prijava-alert-dialog.component";
+import {
+  NeuspesnoKreiranaPrijavaDialogComponent
+} from "../neuspesno-kreirana-prijava-dialog/neuspesno-kreirana-prijava-dialog.component";
 
 @Component({
   selector: 'app-add-prijava-dialog',
@@ -82,6 +85,7 @@ grupa: Grupa;
       if(error.response.status ===401){
         this.service.setAuthToken(null);
       }
+      this.dialog.open(NeuspesnoKreiranaPrijavaDialogComponent);
       console.log(error.message)
     });
 
