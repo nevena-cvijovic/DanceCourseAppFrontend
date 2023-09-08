@@ -5,6 +5,7 @@ import {HttpErrorResponse} from "@angular/common/http";
 import {MatDialog} from "@angular/material/dialog";
 import {RasporedDialogComponent} from "./raspored-dialog/raspored-dialog.component";
 import {AxiosService} from "../axios.service";
+import {AuthServiceService} from "../auth/auth-service.service";
 
 @Component({
   selector: 'app-grupe',
@@ -13,8 +14,8 @@ import {AxiosService} from "../axios.service";
 })
 export class GrupeComponent implements OnInit{
 grupe: Grupa[];
-
-constructor(private service: AxiosService, public dialog:MatDialog) {
+  public opened = false;
+constructor(private service: AxiosService, public dialog:MatDialog, private authService: AuthServiceService) {
 }
 
 ngOnInit() {
@@ -72,4 +73,8 @@ getGrupe(){
         });
 
     }
+
+  logOut() {
+    this.authService.logOut();
+  }
 }

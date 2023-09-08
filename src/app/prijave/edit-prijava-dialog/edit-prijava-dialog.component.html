@@ -1,25 +1,25 @@
 
 <form #editForm = "ngForm" >
-  <h1 mat-dialog-title>Izmeni prijavu  </h1>
+  <h1 mat-dialog-title class="title">Rasporedi polaznika u grupu</h1>
   <div mat-dialog-content>
 
-    <p>Naziv kursa</p>
+
     <mat-form-field >
-      <mat-label >Unesi naziv</mat-label>
+      <mat-label >Naziv kursa</mat-label>
       <input  value="{{prijava?.kurs?.nazivKursa}}" name = "nazivKursa" matInput disabled required>
     </mat-form-field>
-    <p>Polaznik</p>
+
     <mat-form-field>
-      <mat-label >Uneti polaznika</mat-label>
+      <mat-label >Polaznik</mat-label>
       <input disabled value="{{prijava?.korisnik?.ime}} {{prijava?.korisnik?.prezime}} - {{prijava?.korisnik?.korisnickoIme}}" name = "trajanjeUNedeljama"  matInput  required>
     </mat-form-field>
     <br>
-    <p>Datum prijave</p>
+
     <mat-form-field>
       <mat-label>Datum prijave</mat-label>
       <input matInput disabled value="{{prijava?.datumPrijave| date:'dd/MM/yyyy'}}">
     </mat-form-field>
-    <p>Napomena</p>
+
     <mat-form-field>
       <mat-label>Napomena</mat-label>
       <input matInput disabled value="{{prijava?.napomena}}">
@@ -38,6 +38,6 @@
   <div mat-dialog-actions align="end">
     <button mat-button (click)="onNoClick()">Cancel</button>
     <button mat-raised-button type = "submit" [disabled] = "editForm.invalid"  color = "primary"
-            (click)="izmeni(editForm.value)" >Sačuvaj prijavu</button>
+            (click)="izmeni(editForm.value)" ><b>Sačuvaj prijavu</b></button>
   </div>
 </form>

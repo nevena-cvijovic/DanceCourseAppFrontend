@@ -4,6 +4,7 @@ import {DanceCourseService} from "../../dance-course.service";
 import {Prijava} from "../../model/prijava-model";
 import {Grupa} from "../../model/grupa-model";
 import {HttpErrorResponse} from "@angular/common/http";
+import {AxiosService} from "../../axios.service";
 
 @Component({
   selector: 'app-edit-prijava-dialog',
@@ -15,7 +16,7 @@ export class EditPrijavaDialogComponent implements OnInit{
   prijava: Prijava;
   grupe: Grupa[]=[];
   constructor(public dialogRef: MatDialogRef<EditPrijavaDialogComponent>,
-              @Inject(MAT_DIALOG_DATA) public data: any, private service: DanceCourseService) {
+              @Inject(MAT_DIALOG_DATA) public data: any, private service: AxiosService) {
 
     this.prijava = this.data;
     console.log("prijava pre izmene");
@@ -30,18 +31,29 @@ export class EditPrijavaDialogComponent implements OnInit{
     this.dialogRef.close();
   }
   private getGrupe() {
-    this.service.vratiGrupe().subscribe(
-      (response: Grupa[])=>{
-        for(const g of response){
+
+    this.service.request(
+      "GET",
+      "grupa/all",
+      {}
+    ).then(
+      (response)=>{
+        for(const g of response.data){
           if(g.kurs.idKursa===this.prijava.kurs.idKursa){
             this.grupe.push(g);
           }
         }
-      },
-      (error: HttpErrorResponse)=>{
-        alert(error.message);
       }
+    ).catch(
+      (error)=>{
+        if(error.response.status ===401){
+          this.service.setAuthToken(null);
+        }
+        console.log(error.message)
+      }
+
     )
+
   }
 
   izmeni(p:Prijava) {
@@ -49,14 +61,24 @@ export class EditPrijavaDialogComponent implements OnInit{
     console.log(p);
     this.prijava.grupa = p.grupa;
 
-    this.service.izmeniPrijavu(this.prijava).subscribe(
-      (response: Prijava)=>{
-        console.log(response);
-      },
-      (error:HttpErrorResponse)=>{
-        alert(error.message);
+    this.service.request(
+      "PUT",
+      "prijava/update",
+      this.prijava
+    ).then(
+      (response)=>{
+        console.log(response.data);
       }
-    );
+    ).catch(
+      (error)=>{
+        console.log(error.message);
+        if(error.response.status ===401){
+          this.service.setAuthToken(null);
+        }
+      }
+    )
+
+
     this.dialogRef.close();
   }
 }

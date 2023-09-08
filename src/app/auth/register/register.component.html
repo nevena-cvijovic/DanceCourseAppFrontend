@@ -1,3 +1,17 @@
+<nav class = "navbar navbar-expand-lg">
+  <mat-toolbar color="primary">
+
+    <span class = "naslov"><a routerLink="/" class = "naslov">Maravilla Arte</a></span>
+
+
+
+
+
+  </mat-toolbar>
+
+
+</nav>
+
 <div class = "container">
 
   <form #registerForm="ngForm" (ngSubmit)="registruj(registerForm)">
@@ -48,7 +62,7 @@
     </div>
     <div mat-dialog-actions align="end">
       <button mat-raised-button type = "submit" [disabled] = "registerForm.invalid"  color = "primary"
-              >Registruj se</button>
+              ><b>Registruj se</b></button>
     </div>
   </form>
 

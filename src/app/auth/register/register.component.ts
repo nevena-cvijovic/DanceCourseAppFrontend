@@ -14,7 +14,7 @@ import {AuthServiceService} from "../auth-service.service";
 })
 export class RegisterComponent{
 
-
+korisnik:Korisnik;
   hide = true;
 kor:Korisnik;
   ime: string = "";
@@ -35,7 +35,7 @@ kor:Korisnik;
   registruj(registerForm: NgForm) {
 
     this.kor = registerForm.value;
-    this.authService.register(this.kor);
+    this.korisnik = this.authService.register(this.kor);
 
 
 

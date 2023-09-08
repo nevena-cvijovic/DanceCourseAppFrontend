@@ -1,12 +1,19 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap');
+
+
 body {
   margin: 0;
 
+  font-family: 'Montserrat', sans-serif;
 }
 
 * {
-  font-family: sans-serif;
+  font-family: 'Montserrat', sans-serif;
 }
-
+h1{
+  font-family: 'Montserrat', sans-serif;
+}
 input {
   padding: 0.75rem;
   border: 1px solid rgba(0, 0, 0, 0.125);
@@ -23,7 +30,7 @@ button {
   padding: 0.75rem;
   background: #801ca4;
   color: white;
-  font-weight: bold;
+  font-weight: bolder;
   border: none;
   font-size: 1rem;
   cursor: pointer;
@@ -39,5 +46,6 @@ button {
   }
 }
 
+
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { margin: 0; font-family: 'Montserrat', sans-serif; }

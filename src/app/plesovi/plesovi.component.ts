@@ -7,6 +7,7 @@ import {MatDialog} from "@angular/material/dialog";
 import {AddPlesDialogComponent} from "./add-ples-dialog/add-ples-dialog.component";
 import {SelectionModel} from "@angular/cdk/collections";
 import {AxiosService} from "../axios.service";
+import {AuthServiceService} from "../auth/auth-service.service";
 
 
 @Component({
@@ -15,7 +16,7 @@ import {AxiosService} from "../axios.service";
   styleUrls: ['./plesovi.component.css']
 })
 export class PlesoviComponent implements OnInit{
-
+  public opened = false;
   plesovi: Ples[]=[];
   displayedColumns: string[] = [ 'nazivPlesa'];
     selection = new SelectionModel<Ples>(false, []);
@@ -23,7 +24,7 @@ export class PlesoviComponent implements OnInit{
 
     color: ' #801ca4';
 
-constructor(private service: AxiosService,public dialog:MatDialog) {
+constructor(private service: AxiosService,public dialog:MatDialog, private authService: AuthServiceService) {
 }
 
 ngOnInit() {
@@ -78,5 +79,10 @@ ngOnInit() {
             console.log(result);
             this.getPlesovi();
         })
+    }
+
+
+    logOut(){
+  this.authService.logOut();
     }
 }

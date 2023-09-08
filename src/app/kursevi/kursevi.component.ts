@@ -13,6 +13,7 @@ import {MatFormFieldControl} from "@angular/material/form-field";
 import { Router} from "@angular/router";
 import {AxiosService} from "../axios.service";
 import {MatTableDataSource} from "@angular/material/table";
+import {AuthServiceService} from "../auth/auth-service.service";
 
 @Component({
   selector: 'app-kursevi',
@@ -22,10 +23,10 @@ import {MatTableDataSource} from "@angular/material/table";
 export class KurseviComponent implements OnInit{
 
   kursevi: Kurs[];
+  public opened = false;
 
 
-
-  constructor(private service: AxiosService,public dialog:MatDialog) {
+  constructor(private service: AxiosService,public dialog:MatDialog, private authService: AuthServiceService) {
 
 
 
@@ -80,6 +81,7 @@ window.location.reload();
         })
         dialogRef.afterClosed().subscribe(result => {
             console.log(result);
+            this.kursevi=[];
             this.ngOnInit();
 
         });
@@ -114,6 +116,10 @@ window.location.reload();
             this.getKursevi();
         }
     }
+
+  logOut() {
+    this.authService.logOut();
+  }
 }
 
 

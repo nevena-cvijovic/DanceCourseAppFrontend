@@ -1,3 +1,17 @@
+<nav class = "navbar navbar-expand-lg">
+  <mat-toolbar color="primary">
+
+    <span class = "naslov"><a routerLink="/" class = "naslov">Maravilla Arte</a></span>
+
+
+
+
+
+  </mat-toolbar>
+
+
+</nav>
+
 <div class = "container">
 
   <form #loginForm = "ngForm" (ngSubmit)="onSubmitLogin(loginForm)">
@@ -12,7 +26,7 @@
       <p>Lozinka:</p>
       <mat-form-field>
         <mat-label>Unesi lozinku</mat-label>
-        <input matInput name="lozinka" [(ngModel)]="lozinka" [type]="hide ? 'password' : 'text'">
+        <input matInput name="lozinka" [(ngModel)]="lozinka" [type]="hide ? 'password' : 'text'" required>
         <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
           <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
         </button>
@@ -20,12 +34,12 @@
     </div>
     <div mat-dialog-actions align="end">
       <button mat-raised-button type = "submit" [disabled] = "loginForm.invalid"  color = "primary"
-      >Uloguj se</button>
+      ><b>Uloguj se</b></button>
     </div>
     <p>Nemaš nalog?</p>
     <div mat-dialog-actions align="start">
       <button mat-raised-button type = "button"   color = "primary" routerLink="/register"
-      >Registruj se</button>
+      ><b>Registruj se</b></button>
     </div>
   </form>
 </div>

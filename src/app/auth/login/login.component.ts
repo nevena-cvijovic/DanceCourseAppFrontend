@@ -1,8 +1,9 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {FormControl, FormGroup, NgForm, Validators} from "@angular/forms";
-import {AuthServiceService, Korisnik} from "../auth-service.service";
+import {AuthServiceService} from "../auth-service.service";
 import {AxiosService} from "../../axios.service";
 import {Route, Router} from "@angular/router";
+import {Korisnik} from "../../model/korisnik-model";
 
 
 @Component({

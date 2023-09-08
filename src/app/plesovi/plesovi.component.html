@@ -1,6 +1,47 @@
+<nav class = "navbar navbar-expand-lg">
+  <mat-toolbar color="primary">
+    <button mat-icon-button  class=" menu" (click) = "opened =!opened" aria-label="Example icon-button with menu icon" >
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span class = "naslov"><a routerLink="/" class = "naslov">Maravilla Arte</a></span>
+
+    <span class="example-spacer"></span>
+
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon" (click)="logOut()">
+      <mat-icon>exit_to_app</mat-icon>
+    </button>
+
+  </mat-toolbar>
+
+
+</nav>
+<mat-drawer-container class="example-container" autosize>
+  <mat-drawer #drawer class="example-sidenav" mode="side" [(opened)] = "opened">
+
+
+
+
+
+
+
+
+    <mat-list>
+      <a routerLink="/kursevi"><b>Kursevi</b></a></mat-list>
+
+    <mat-list> <a routerLink="/plesovi"><b>Plesovi</b></a></mat-list>
+    <mat-list> <a routerLink="/grupe"><b>Grupe</b></a></mat-list>
+    <mat-list> <a routerLink="/prijave"><b>Prijave</b></a></mat-list>
+  </mat-drawer>
+
+
+
+
+
+
+
 <div class = "container" id = "main-container">
     <div class="addButton" >
-        <button mat-raised-button  color = "primary" (click) ="openDialog()">Dodaj novi ples</button>
+        <button mat-raised-button  color = "primary" (click) ="openDialog()"><b>Dodaj novi ples</b></button>
     </div>
     <div class ="searchbar mt-4 mb-4">
         <form class = "form-inline my-2 my-lg-0">
@@ -29,3 +70,4 @@
 
 
 </div>
+</mat-drawer-container>

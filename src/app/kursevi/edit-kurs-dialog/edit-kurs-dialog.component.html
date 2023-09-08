@@ -1,5 +1,5 @@
 <form #editForm = "ngForm" >
-    <h1 mat-dialog-title>Izmeni kurs {{kurs?.nazivKursa}}  </h1>
+    <h1 mat-dialog-title class="title">Izmeni kurs {{kurs?.nazivKursa}}  </h1>
     <div mat-dialog-content>
 
         <p>Naziv kursa</p>
@@ -22,8 +22,8 @@
 
     </div>
     <div mat-dialog-actions align="end">
-        <button mat-button (click)="onNoClick()">Cancel</button>
+        <button mat-button (click)="onNoClick()"><b>Cancel</b></button>
         <button mat-raised-button type = "submit" [disabled] = "editForm.invalid"  color = "primary"
-               (click)="izmeni(editForm.value)" >Sačuvaj kurs</button>
+                (click)="izmeni(editForm.value)" ><b>Sačuvaj kurs</b></button>
     </div>
 </form>
