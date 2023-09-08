@@ -9,6 +9,11 @@ import {SelectionModel} from "@angular/cdk/collections";
 import {Grupa} from "../../model/grupa-model";
 import {Router} from "@angular/router";
 import {AxiosService} from "../../axios.service";
+import {MatDialog} from "@angular/material/dialog";
+import {UspesnoDodataGrupaDialogComponent} from "../uspesno-dodata-grupa-dialog/uspesno-dodata-grupa-dialog.component";
+import {
+  NeuspesnoDodataGrupaDialogComponent
+} from "../neuspesno-dodata-grupa-dialog/neuspesno-dodata-grupa-dialog.component";
 
 interface DanUNedelji{
   value: string,
@@ -43,7 +48,7 @@ export class AddGrupaComponent implements OnInit{
 // @ts-ignore
   dataSource:any;
   displayedColumns: string[]= ['danUNedelji','brojCasova','brojSale','vreme','opisKursa'];
-  constructor(private service: AxiosService,private router: Router) {
+  constructor(private service: AxiosService,private router: Router,public dialog: MatDialog) {
     this.dataSource = new MatTableDataSource(this.rasporedi);
   }
   highlight(highlighted: boolean) {
@@ -118,6 +123,7 @@ export class AddGrupaComponent implements OnInit{
       (response)=>{
         this.rasporedi=[];
         this.dataSource = new MatTableDataSource(this.rasporedi);
+        const dialogRef = this.dialog.open(UspesnoDodataGrupaDialogComponent);
 
       }
     ).catch(
@@ -128,6 +134,7 @@ export class AddGrupaComponent implements OnInit{
           this.service.setAuthToken(null);
         }else{
          console.log(error.response.code);
+         this.dialog.open(NeuspesnoDodataGrupaDialogComponent);
         }
       }
     )
