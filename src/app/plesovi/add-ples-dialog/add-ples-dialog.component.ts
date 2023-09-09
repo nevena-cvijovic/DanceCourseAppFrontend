@@ -6,6 +6,7 @@ import {Ples} from "../../model/ples-model";
 import {HttpErrorResponse} from "@angular/common/http";
 import {AxiosService} from "../../axios.service";
 import {UspesnoDodatPlesDialogComponent} from "../uspesno-dodat-ples-dialog/uspesno-dodat-ples-dialog.component";
+import {AuthServiceService} from "../../auth/auth-service.service";
 @Component({
   selector: 'app-add-ples-dialog',
   templateUrl: './add-ples-dialog.component.html',
@@ -14,7 +15,7 @@ import {UspesnoDodatPlesDialogComponent} from "../uspesno-dodat-ples-dialog/uspe
 export class AddPlesDialogComponent {
 
   constructor(public dialogRef: MatDialogRef<AddPlesDialogComponent>,
-              @Inject(MAT_DIALOG_DATA) public data: any, private service: AxiosService, public dialog: MatDialog) {
+              @Inject(MAT_DIALOG_DATA) public data: any, private service: AxiosService, public dialog: MatDialog, private authService:AuthServiceService) {
   }
 
   onCancelClick() {
@@ -35,7 +36,7 @@ export class AddPlesDialogComponent {
     ).catch(
       (error)=>{
         if(error.response.status ===401){
-          this.service.setAuthToken(null);
+          this.authService.logOut();
         }
         addForm.resetForm();
       }

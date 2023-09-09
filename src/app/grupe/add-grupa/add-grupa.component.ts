@@ -14,6 +14,7 @@ import {UspesnoDodataGrupaDialogComponent} from "../uspesno-dodata-grupa-dialog/
 import {
   NeuspesnoDodataGrupaDialogComponent
 } from "../neuspesno-dodata-grupa-dialog/neuspesno-dodata-grupa-dialog.component";
+import {AuthServiceService} from "../../auth/auth-service.service";
 
 interface DanUNedelji{
   value: string,
@@ -48,7 +49,7 @@ export class AddGrupaComponent implements OnInit{
 // @ts-ignore
   dataSource:any;
   displayedColumns: string[]= ['danUNedelji','brojCasova','brojSale','vreme','opisKursa'];
-  constructor(private service: AxiosService,private router: Router,public dialog: MatDialog) {
+  constructor(private service: AxiosService,private router: Router,public dialog: MatDialog, private authService: AuthServiceService) {
     this.dataSource = new MatTableDataSource(this.rasporedi);
   }
   highlight(highlighted: boolean) {
@@ -89,7 +90,7 @@ export class AddGrupaComponent implements OnInit{
     ).catch(
       (error)=>{
         if(error.response.status ===401){
-          this.service.setAuthToken(null);
+          this.authService.logOut();
         }else{
           this.kursevi = error.response.code;
         }
@@ -131,7 +132,7 @@ export class AddGrupaComponent implements OnInit{
         this.rasporedi=[];
         this.dataSource = new MatTableDataSource(this.rasporedi);
         if(error.response.status ===401){
-          this.service.setAuthToken(null);
+          this.authService.logOut();
         }else{
          console.log(error.response.code);
          this.dialog.open(NeuspesnoDodataGrupaDialogComponent);

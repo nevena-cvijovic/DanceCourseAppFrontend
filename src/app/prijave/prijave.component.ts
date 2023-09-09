@@ -37,7 +37,7 @@ export class PrijaveComponent implements OnInit{
     ).catch(
       (error)=>{
         if(error.response.status ===401){
-          this.service.setAuthToken(null);
+          this.authService.logOut();
         }else{
           this.prijave = error.response.code;
         }

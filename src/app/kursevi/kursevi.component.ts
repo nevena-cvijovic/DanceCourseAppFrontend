@@ -49,7 +49,7 @@ ngOnInit() {
       ).catch(
         (error)=>{
           if(error.response.status ===401){
-            this.service.setAuthToken(null);
+            this.authService.logOut();
           }else{
             this.kursevi = error.response.code;
           }
@@ -67,8 +67,8 @@ openDialog(){
       });
 dialogRef.afterClosed().subscribe(result => {
     console.log(result);
-     // this.ngOnInit();
-window.location.reload();
+      this.ngOnInit();
+
 
 });
 

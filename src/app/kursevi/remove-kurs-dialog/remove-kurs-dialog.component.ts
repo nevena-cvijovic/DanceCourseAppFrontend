@@ -9,6 +9,7 @@ import {UspesnoObrisanKursDialogComponent} from "./uspesno-obrisan-kurs-dialog/u
 import {
   NeuspesnoObrisanKursDialogComponent
 } from "./neuspesno-obrisan-kurs-dialog/neuspesno-obrisan-kurs-dialog.component";
+import {AuthServiceService} from "../../auth/auth-service.service";
 
 @Component({
   selector: 'app-remove-kurs-dialog',
@@ -19,7 +20,7 @@ export class RemoveKursDialogComponent implements OnInit{
 
   kurs: Kurs;
   constructor(public dialogRef: MatDialogRef<RemoveKursDialogComponent>,
-              @Inject(MAT_DIALOG_DATA) public data: any, private service: AxiosService, public dialog:MatDialog) {
+              @Inject(MAT_DIALOG_DATA) public data: any, private service: AxiosService, public dialog:MatDialog, private authService: AuthServiceService) {
     this.kurs = this.data;
   }
 
@@ -45,7 +46,7 @@ export class RemoveKursDialogComponent implements OnInit{
     ).catch(
       (error)=>{
         if(error.response.status ===401){
-          this.service.setAuthToken(null);
+          this.authService.logOut();
         }if(error.response.status ===500){
           alert("Postoji grupa koja pohadja ovaj kurs");
         }

@@ -57,6 +57,7 @@ import { UspesnoSacuvanKursComponent } from './kursevi/uspesno-sacuvan-kurs/uspe
 import { NeuspesnoSacuvanKursComponent } from './kursevi/neuspesno-sacuvan-kurs/neuspesno-sacuvan-kurs.component';
 import { UspesnoObrisanKursDialogComponent } from './kursevi/remove-kurs-dialog/uspesno-obrisan-kurs-dialog/uspesno-obrisan-kurs-dialog.component';
 import { NeuspesnoObrisanKursDialogComponent } from './kursevi/remove-kurs-dialog/neuspesno-obrisan-kurs-dialog/neuspesno-obrisan-kurs-dialog.component';
+import { NeuspesnoDodatPlesDialogComponent } from './plesovi/neuspesno-dodat-ples-dialog/neuspesno-dodat-ples-dialog.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -94,7 +95,8 @@ import { NeuspesnoObrisanKursDialogComponent } from './kursevi/remove-kurs-dialo
     UspesnoSacuvanKursComponent,
     NeuspesnoSacuvanKursComponent,
     UspesnoObrisanKursDialogComponent,
-    NeuspesnoObrisanKursDialogComponent
+    NeuspesnoObrisanKursDialogComponent,
+    NeuspesnoDodatPlesDialogComponent
   ],
   imports: [
     BrowserModule,

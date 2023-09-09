@@ -46,7 +46,7 @@ ngOnInit() {
     ).catch(
       (error)=>{
         if(error.response.status ===401){
-          this.service.setAuthToken(null);
+          this.authService.logOut();
         }else{
           this.plesovi = error.response.code;
         }

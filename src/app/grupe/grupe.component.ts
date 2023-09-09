@@ -36,7 +36,7 @@ getGrupe(){
   ).catch(
     (error)=>{
       if(error.response.status ===401){
-        this.service.setAuthToken(null);
+        this.authService.logOut();
       }else{
         this.grupe = error.response.code;
       }

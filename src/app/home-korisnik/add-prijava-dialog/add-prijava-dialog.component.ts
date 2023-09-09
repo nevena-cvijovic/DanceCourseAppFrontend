@@ -58,7 +58,7 @@ grupa: Grupa;
   ).catch(
     (error)=>{
       if(error.response.status ===401){
-        this.service.setAuthToken(null);
+        this.authService.logOut();
       }
     }
   );
@@ -83,7 +83,7 @@ grupa: Grupa;
       }
     ).catch((error)=>{
       if(error.response.status ===401){
-        this.service.setAuthToken(null);
+        this.authService.logOut();
       }
       this.dialog.open(NeuspesnoKreiranaPrijavaDialogComponent);
       console.log(error.message)

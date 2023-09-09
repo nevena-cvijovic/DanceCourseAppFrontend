@@ -8,6 +8,7 @@ import {AxiosService} from "../../axios.service";
 import {error} from "@angular/compiler-cli/src/transformers/util";
 import {UspesnoSacuvanKursComponent} from "../uspesno-sacuvan-kurs/uspesno-sacuvan-kurs.component";
 import {NeuspesnoSacuvanKursComponent} from "../neuspesno-sacuvan-kurs/neuspesno-sacuvan-kurs.component";
+import {AuthServiceService} from "../../auth/auth-service.service";
 
 
 @Component({
@@ -24,7 +25,7 @@ export class EditKursDialogComponent implements OnInit{
 
 
   constructor(public dialogRef: MatDialogRef<EditKursDialogComponent>,
-              @Inject(MAT_DIALOG_DATA) public data: any, private axiosService: AxiosService, public dialog: MatDialog) {
+              @Inject(MAT_DIALOG_DATA) public data: any, private axiosService: AxiosService, public dialog: MatDialog, private authService: AuthServiceService) {
       this.kurs = this.data;
       console.log("kurs pre izmene")
       console.log(this.kurs);
@@ -57,7 +58,7 @@ export class EditKursDialogComponent implements OnInit{
     ).catch(
       (error)=>{
         if(error.response.status ===401){
-          this.axiosService.setAuthToken(null);
+          this.authService.logOut();
         }else{
           this.plesovi = error.response.code;
         }
@@ -85,7 +86,7 @@ export class EditKursDialogComponent implements OnInit{
         }
       ).catch((error)=>{
         if(error.response.status ===401){
-          this.axiosService.setAuthToken(null);
+          this.authService.logOut();
         }
         this.dialog.open(NeuspesnoSacuvanKursComponent);
       })

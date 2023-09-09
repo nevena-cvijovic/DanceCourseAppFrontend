@@ -6,6 +6,7 @@ import {Grupa} from "../../model/grupa-model";
 import {HttpErrorResponse} from "@angular/common/http";
 import {MatTableDataSource} from "@angular/material/table";
 import {AxiosService} from "../../axios.service";
+import {AuthServiceService} from "../../auth/auth-service.service";
 
 @Component({
   selector: 'app-raspored-dialog',
@@ -18,7 +19,7 @@ grupa: Grupa;
 displayedColumns: string[]= ['danUNedelji','brojCasova','brojSale','vreme','opisKursa'];
 dataSource:any;
 constructor(public dialogRef: MatDialogRef<RasporedDialogComponent>,
-            @Inject(MAT_DIALOG_DATA) public data: any , private axiosService:AxiosService) {
+            @Inject(MAT_DIALOG_DATA) public data: any , private axiosService:AxiosService, private authService: AuthServiceService) {
   this.grupa = this.data;
 
 }
@@ -44,7 +45,7 @@ public getRasporedi(){
   ).catch(
     (error)=>{
       if(error.response.status ===401){
-        this.axiosService.setAuthToken(null);
+        this.authService.logOut();
       }else{
         this.rasporedi = error.response.code;
       }

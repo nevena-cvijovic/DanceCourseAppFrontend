@@ -11,6 +11,7 @@ import {
 import {
   NeuspesnoIzmenjenaPrijavaDialogComponent
 } from "../neuspesno-izmenjena-prijava-dialog/neuspesno-izmenjena-prijava-dialog.component";
+import {AuthServiceService} from "../../auth/auth-service.service";
 
 @Component({
   selector: 'app-edit-prijava-dialog',
@@ -22,7 +23,7 @@ export class EditPrijavaDialogComponent implements OnInit{
   prijava: Prijava;
   grupe: Grupa[]=[];
   constructor(public dialogRef: MatDialogRef<EditPrijavaDialogComponent>,
-              @Inject(MAT_DIALOG_DATA) public data: any, private service: AxiosService, public dialog:MatDialog) {
+              @Inject(MAT_DIALOG_DATA) public data: any, private service: AxiosService, public dialog:MatDialog,private authService: AuthServiceService) {
 
     this.prijava = this.data;
     console.log("prijava pre izmene");
@@ -53,7 +54,7 @@ export class EditPrijavaDialogComponent implements OnInit{
     ).catch(
       (error)=>{
         if(error.response.status ===401){
-          this.service.setAuthToken(null);
+          this.authService.logOut();
         }
         console.log(error.message)
       }
@@ -80,7 +81,7 @@ export class EditPrijavaDialogComponent implements OnInit{
       (error)=>{
         console.log(error.message);
         if(error.response.status ===401){
-          this.service.setAuthToken(null);
+          this.authService.logOut();
         }
 
         const dialogRef = this.dialog.open(NeuspesnoIzmenjenaPrijavaDialogComponent);

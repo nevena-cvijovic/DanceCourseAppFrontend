@@ -9,6 +9,7 @@ import {MatTableDataSource} from "@angular/material/table";
 import {AxiosService} from "../../axios.service";
 import {UspesnoSacuvanKursComponent} from "../uspesno-sacuvan-kurs/uspesno-sacuvan-kurs.component";
 import {NeuspesnoSacuvanKursComponent} from "../neuspesno-sacuvan-kurs/neuspesno-sacuvan-kurs.component";
+import {AuthServiceService} from "../../auth/auth-service.service";
 
 
 @Component({
@@ -20,7 +21,7 @@ export class AddKursDialogComponent implements OnInit{
     plesovi: Ples[];
 
     constructor(public dialogRef: MatDialogRef<AddKursDialogComponent>,
-                @Inject(MAT_DIALOG_DATA) public data: any, private axiosService: AxiosService, public dialog: MatDialog) {
+                @Inject(MAT_DIALOG_DATA) public data: any, private axiosService: AxiosService, public dialog: MatDialog, private authService:AuthServiceService) {
     }
 
     ngOnInit(){
@@ -44,7 +45,7 @@ export class AddKursDialogComponent implements OnInit{
       ).catch(
         (error)=>{
           if(error.response.status ===401){
-            this.axiosService.setAuthToken(null);
+            this.authService.logOut();
           }else{
             this.plesovi = error.response.code;
           }
@@ -67,7 +68,7 @@ export class AddKursDialogComponent implements OnInit{
         }
       ).catch((error)=>{
         if(error.response.status ===401){
-          this.axiosService.setAuthToken(null);
+          this.authService.logOut();
         }
         this.dialog.open(NeuspesnoSacuvanKursComponent);
       })
