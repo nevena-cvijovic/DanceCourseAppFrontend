@@ -113,6 +113,7 @@ dialogRef.afterClosed().subscribe(result => {
         }
         this.kursevi = results;
         if(results.length===0 ||!key){
+
             this.getKursevi();
         }
     }

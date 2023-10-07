@@ -76,6 +76,8 @@ export class EditPrijavaDialogComponent implements OnInit{
       (response)=>{
         console.log(response.data);
         const dialogRef = this.dialog.open(UspesnoIzmenjenaPrijavaDialogComponent);
+
+
       }
     ).catch(
       (error)=>{

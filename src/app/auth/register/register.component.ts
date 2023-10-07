@@ -45,10 +45,8 @@ kor:Korisnik;
     this.korisnik = this.authService.register(this.kor);
 
 if(this.korisnik!==null){
-  this.dialog.open(UspesnoKreiranNalogDialogComponent);
+
 this.router.navigateByUrl("/login");
-}else{
-  this.dialog.open(NeuspesnoKreiranNalogDialogComponent);
 }
 
 

@@ -55,6 +55,7 @@ getGrupe(){
         }
         this.grupe = results;
         if(results.length===0 ||!key){
+
             this.getGrupe();
         }
     }

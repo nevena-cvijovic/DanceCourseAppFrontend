@@ -7,6 +7,7 @@ import {HttpErrorResponse} from "@angular/common/http";
 import {AxiosService} from "../../axios.service";
 import {UspesnoDodatPlesDialogComponent} from "../uspesno-dodat-ples-dialog/uspesno-dodat-ples-dialog.component";
 import {AuthServiceService} from "../../auth/auth-service.service";
+import {NeuspesnoDodatPlesDialogComponent} from "../neuspesno-dodat-ples-dialog/neuspesno-dodat-ples-dialog.component";
 @Component({
   selector: 'app-add-ples-dialog',
   templateUrl: './add-ples-dialog.component.html',
@@ -38,6 +39,7 @@ export class AddPlesDialogComponent {
         if(error.response.status ===401){
           this.authService.logOut();
         }
+        this.dialog.open(NeuspesnoDodatPlesDialogComponent);
         addForm.resetForm();
       }
     )

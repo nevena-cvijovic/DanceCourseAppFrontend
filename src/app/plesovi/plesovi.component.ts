@@ -65,6 +65,7 @@ ngOnInit() {
         this.plesovi = results;
         this.dataSource = new MatTableDataSource(this.plesovi);
         if(results.length===0 ||!key){
+
             this.getPlesovi();
         }
     }

@@ -31,14 +31,14 @@ onSubmitLogin(loginForm: NgForm):void{
 this.korisnik = this.authService.logIn(this.korisnickoIme, this.lozinka);
 console.log(this.korisnik)
 if(this.korisnik!=null){
-  this.dialog.open(UspesnoLogovanjeDialogComponent);
+
 if(this.korisnik.korisnickoIme ==="admin"){
   this.router.navigateByUrl("/kursevi")
 }else{
   this.router.navigateByUrl("/maravilla-arte")
 }
 }else{
-  this.dialog.open(NeuspesnoLogovanjeDialogComponent);
+
 }
   }
 
